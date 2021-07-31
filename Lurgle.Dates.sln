@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lurgle.Dates", "Lurgle.Dates\Lurgle.Dates.csproj", "{BEAFB7F1-798A-48C8-9A8F-6DCB6D348C10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lurgle.Dates.Tests", "Lurgle.Dates.Tests\Lurgle.Dates.Tests.csproj", "{2F4DFD9C-17FF-4F4A-A2B4-4AC29ACF1FAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEAFB7F1-798A-48C8-9A8F-6DCB6D348C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEAFB7F1-798A-48C8-9A8F-6DCB6D348C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEAFB7F1-798A-48C8-9A8F-6DCB6D348C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEAFB7F1-798A-48C8-9A8F-6DCB6D348C10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4DFD9C-17FF-4F4A-A2B4-4AC29ACF1FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4DFD9C-17FF-4F4A-A2B4-4AC29ACF1FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4DFD9C-17FF-4F4A-A2B4-4AC29ACF1FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4DFD9C-17FF-4F4A-A2B4-4AC29ACF1FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {474A798B-248A-433F-B919-00EC9A8D9B65}
+	EndGlobalSection
+EndGlobal
