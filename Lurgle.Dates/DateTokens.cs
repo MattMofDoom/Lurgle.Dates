@@ -35,7 +35,7 @@ namespace Lurgle.Dates
             return s.ToString().Trim();
         }
 
-        private static IEnumerable<string> HandleTokens(IEnumerable<string> values,
+        public static IEnumerable<string> HandleTokens(IEnumerable<string> values,
             KeyValuePair<string, string>? token = null)
         {
             return values.Select(x => HandleTokens(x, token)).ToList();

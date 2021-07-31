@@ -12,6 +12,7 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,8 +29,7 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="$(OutDir)/**/*" Exclude="$(OutDir)/$(MSBuildProjectName).dll" Pack="true"
-          PackagePath="lib/$(TargetFramework)" />
+    <None Include="$(OutDir)/**/*" Exclude="$(OutDir)/$(MSBuildProjectName).dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
   </ItemGroup>
 
 </Project>
