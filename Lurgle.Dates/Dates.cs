@@ -126,8 +126,15 @@ namespace Lurgle.Dates
 
             //If it's a simple integer, we can just return the day
             if (int.TryParse(day, out var dayResult) && dayResult > 0)
-                return GetDayOfMonth(DayOrder.None, DayType.Day, DayMatch.None,
+            {
+                var dayOfMonth = GetDayOfMonth(DayOrder.None, DayType.Day, DayMatch.None,
                     new DateTime(firstDay.Year, firstDay.Month, dayResult));
+                if (dayOfMonth.Date < dateNow)
+                    return GetDayOfMonth(DayOrder.None, DayType.Day, DayMatch.None,
+                        new DateTime(firstDay.AddMonths(1).Year, firstDay.AddMonths(1).Month, dayResult));
+
+                return dayOfMonth;
+            }
 
             switch (day.ToLower())
             {
