@@ -155,7 +155,10 @@ namespace Lurgle.Dates.Tests
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow.AddMonths(1), dates[0]);
-                Assert.True(dates[0].DayOfWeek >= DayOfWeek.Sunday && dates[0].DayOfWeek < DayOfWeek.Friday);
+                if (timeNow.ToUniversalTime() == timeNow)
+                    Assert.True(dates[0].DayOfWeek >= DayOfWeek.Monday && dates[0].DayOfWeek < DayOfWeek.Saturday);
+                else
+                    Assert.True(dates[0].DayOfWeek >= DayOfWeek.Sunday && dates[0].DayOfWeek < DayOfWeek.Friday);
             }
         }
 
@@ -239,8 +242,11 @@ namespace Lurgle.Dates.Tests
                     _testOutputHelper.WriteLine("{0:F}: First {1}, {2:F}", timeNow.ToUniversalTime(), m,
                         dates[0]);
 
-                    Assert.True(dates[0].DayOfWeek == m - 1 ||
-                                m == DayOfWeek.Sunday && dates[0].DayOfWeek == DayOfWeek.Saturday);
+                    if (timeNow.ToUniversalTime() == timeNow)
+                        Assert.True(dates[0].DayOfWeek == m);
+                    else
+                        Assert.True(dates[0].DayOfWeek == m - 1 ||
+                                    m == DayOfWeek.Sunday && dates[0].DayOfWeek == DayOfWeek.Saturday);
                 }
             }
         }
@@ -287,8 +293,11 @@ namespace Lurgle.Dates.Tests
                     _testOutputHelper.WriteLine("{0:F}: First {1}, {2:F}", timeNow.ToUniversalTime(), m,
                         dates[0]);
 
-                    Assert.True(dates[0].DayOfWeek == m - 1 ||
-                                m == DayOfWeek.Sunday && dates[0].DayOfWeek == DayOfWeek.Saturday);
+                    if (timeNow.ToUniversalTime() == timeNow)
+                        Assert.True(dates[0].DayOfWeek == m);
+                    else
+                        Assert.True(dates[0].DayOfWeek == m - 1 ||
+                                    m == DayOfWeek.Sunday && dates[0].DayOfWeek == DayOfWeek.Saturday);
                 }
             }
         }
