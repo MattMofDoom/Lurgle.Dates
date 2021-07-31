@@ -63,21 +63,69 @@ namespace Lurgle.Dates.Classes
         // ReSharper disable MemberCanBePrivate.Global
         // ReSharper disable UnusedAutoPropertyAccessor.Local
         // ReSharper disable UnusedAutoPropertyAccessor.Global
+        /// <summary>
+        /// Name
+        /// </summary>
         public string Name { get; }
+        /// <summary>
+        /// Local Name
+        /// </summary>
         public string Name_Local { get; }
+        /// <summary>
+        /// Language
+        /// </summary>
         public string Language { get; }
+        /// <summary>
+        /// Description
+        /// </summary>
         public string Description { get; }
+        /// <summary>
+        /// Country
+        /// </summary>
         public string Country { get; }
+        /// <summary>
+        /// Location
+        /// </summary>
         public string Location { get; }
+        /// <summary>
+        /// List of locations
+        /// </summary>
         public List<string> Locations { get; }
+        /// <summary>
+        /// Holiday type
+        /// </summary>
         public string Type { get; }
+        /// <summary>
+        /// Local start time
+        /// </summary>
         public DateTime LocalStart { get; }
+        /// <summary>
+        /// UTC start time
+        /// </summary>
         public DateTime UtcStart { get; }
+        /// <summary>
+        /// UTC end time
+        /// </summary>
         public DateTime UtcEnd { get; }
+        /// <summary>
+        /// Date in MM/dd/yy format
+        /// </summary>
         public string Date { get; }
+        /// <summary>
+        /// Year of holiday
+        /// </summary>
         public string DateYear { get; }
+        /// <summary>
+        /// Month of holiday
+        /// </summary>
         public string DateMonth { get; }
+        /// <summary>
+        /// Day of holiday
+        /// </summary>
         public string DateDay { get; }
+        /// <summary>
+        /// Weekday of holiday
+        /// </summary>
         public string WeekDay { get; }
     }
 }

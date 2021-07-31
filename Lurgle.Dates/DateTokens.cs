@@ -9,18 +9,36 @@ using System.Text.RegularExpressions;
 
 namespace Lurgle.Dates
 {
+    /// <summary>
+    /// Process date tokens
+    /// </summary>
     public static class DateTokens
     {
+        /// <summary>
+        /// Validate that a valid date has been passed in yyyy-MM-dd format
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool ValidDate(string value)
         {
             return Regex.IsMatch(value, "^(([12]\\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$");
         }
 
+        /// <summary>
+        /// Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool ValidDateExpression(string value)
         {
             return Regex.IsMatch(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
         }
 
+        /// <summary>
+        /// Ensure that a date expression passed is valid including spaces to separate
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string SetValidExpression(string value)
         {
             var match = Regex.Match(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
@@ -35,12 +53,24 @@ namespace Lurgle.Dates
             return s.ToString().Trim();
         }
 
+        /// <summary>
+        /// Handle a list of tokens
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static IEnumerable<string> HandleTokens(IEnumerable<string> values,
             KeyValuePair<string, string>? token = null)
         {
             return values.Select(x => HandleTokens(x, token)).ToList();
         }
 
+        /// <summary>
+        /// Handle date token replacement
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static string HandleTokens(string value, KeyValuePair<string, string>? token = null)
         {
             var replaceValue = GetDateExpressionToken(value);

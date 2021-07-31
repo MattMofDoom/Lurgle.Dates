@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lurgle.Dates</name>
+    </assembly>
+    <members>
+        <member name="T:Lurgle.Dates.Classes.AbstractApiHolidays">
+            <summary>
+                AbstractAPI Holidays API format
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.Classes.AbstractApiHolidays.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+                AbstractAPI Holidays API format
+            </summary>
+            <param name="name"></param>
+            <param name="name_local"></param>
+            <param name="language"></param>
+            <param name="description"></param>
+            <param name="country"></param>
+            <param name="location"></param>
+            <param name="type"></param>
+            <param name="date"></param>
+            <param name="date_year"></param>
+            <param name="date_month"></param>
+            <param name="date_day"></param>
+            <param name="week_day"></param>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Name_Local">
+            <summary>
+            Local Name
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Language">
+            <summary>
+            Language
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Country">
+            <summary>
+            Country
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Location">
+            <summary>
+            Location
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Locations">
+            <summary>
+            List of locations
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Type">
+            <summary>
+            Holiday type
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.LocalStart">
+            <summary>
+            Local start time
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.UtcStart">
+            <summary>
+            UTC start time
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.UtcEnd">
+            <summary>
+            UTC end time
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Date">
+            <summary>
+            Date in MM/dd/yy format
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateYear">
+            <summary>
+            Year of holiday
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateMonth">
+            <summary>
+            Month of holiday
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateDay">
+            <summary>
+            Day of holiday
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.WeekDay">
+            <summary>
+            Weekday of holiday
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Classes.ApiClient">
+            <summary>
+                HTTP Client for retrieving Holidays API
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.Classes.ApiClient.#ctor(System.String,System.Boolean,System.String,System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+                ApiClient instance
+            </summary>
+            <param name="appName"></param>
+            <param name="useProxy"></param>
+            <param name="proxy"></param>
+            <param name="proxyUser"></param>
+            <param name="proxyPass"></param>
+            <param name="proxyBypass"></param>
+            <param name="localUrls"></param>
+        </member>
+        <member name="M:Lurgle.Dates.Classes.ApiClient.CreateMessageHandler">
+            <summary>
+                API client message handler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Classes.ApiClient.CreateHttpClient(System.Net.Http.HttpMessageHandler)">
+            <summary>
+                API Client HttpClient
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lurgle.Dates.Classes.DateExpression">
+            <summary>
+                Date Expression comprising the day order, day type, day of week, and day of month
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.Classes.DateExpression.#ctor(Lurgle.Dates.Enums.DayOrder,Lurgle.Dates.Enums.DayType,System.DayOfWeek,System.DateTime)">
+            <summary>
+                Date Expression comprising the day order, day type, day of week, and date in month
+            </summary>
+            <param name="order"></param>
+            <param name="type"></param>
+            <param name="weekday"></param>
+            <param name="dayofmonth"></param>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.DateExpression.DayOrder">
+            <summary>
+            Order of day in month
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.DateExpression.DayType">
+            <summary>
+            Type of day in month
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.DateExpression.DayOfWeek">
+            <summary>
+            Day of week in month
+            </summary>
+        </member>
+        <member name="P:Lurgle.Dates.Classes.DateExpression.Date">
+            <summary>
+            Date in month
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.DateParse">
+            <summary>
+            Parse date strings with optional expressions
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.DateParse.GetDateTime(System.String)">
+            <summary>
+            Parse a time string with optional expressions
+            </summary>
+            <param name="configValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lurgle.Dates.Dates">
+            <summary>
+                Date calculations for inclusions/exclusions
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetDayOfMonth(Lurgle.Dates.Enums.DayOrder,Lurgle.Dates.Enums.DayType,Lurgle.Dates.Enums.DayMatch,System.DateTime)">
+            <summary>
+                Return a DateExpression based on expressed day order, day type, day match type, and the next local day and month
+                interval start
+            </summary>
+            <param name="dayOrder"></param>
+            <param name="dayType"></param>
+            <param name="matchDay"></param>
+            <param name="nextStart"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetDayType(System.String,System.DateTime)">
+            <summary>
+                Return a date expression given the type of day, using the the next local day and month interval start
+            </summary>
+            <param name="day"></param>
+            <param name="dateNow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetUtcDaysOfMonth(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+                Return the UTC days of month that are included/excluded, given a date expression and start time
+            </summary>
+            <param name="dateExpression"></param>
+            <param name="startTime"></param>
+            <param name="startFormat"></param>
+            <param name="timeNow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetDaysOfMonth(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+                Return the UTC days of month that are included/excluded, given a date expression and start time
+            </summary>
+            <param name="dateExpression"></param>
+            <param name="startTime"></param>
+            <param name="startFormat"></param>
+            <param name="timeNow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetUtcDaysOfWeek(System.String,System.String,System.String)">
+            <summary>
+                Return a list of DayOfWeek, given a comma-delimited string and start time />
+            </summary>
+            <param name="daysOfWeek"></param>
+            <param name="startTime"></param>
+            <param name="startFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetDaysOfWeek(System.String,System.String,System.String)">
+            <summary>
+                Return a list of DayOfWeek, given a comma-delimited string and start time />
+            </summary>
+            <param name="daysOfWeek"></param>
+            <param name="startTime"></param>
+            <param name="startFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lurgle.Dates.DateTokens">
+            <summary>
+            Process date tokens
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.DateTokens.ValidDate(System.String)">
+            <summary>
+            Validate that a valid date has been passed in yyyy-MM-dd format
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.DateTokens.ValidDateExpression(System.String)">
+            <summary>
+            Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.DateTokens.SetValidExpression(System.String)">
+            <summary>
+            Ensure that a date expression passed is valid including spaces to separate
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Handle a list of tokens
+            </summary>
+            <param name="values"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.String,System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Handle date token replacement
+            </summary>
+            <param name="value"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lurgle.Dates.Enums.DayMatch">
+            <summary>
+                Match days of week, or none
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Sunday">
+            <summary>
+            Sunday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Monday">
+            <summary>
+            Monday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Tuesday">
+            <summary>
+            Tuesday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Wednesday">
+            <summary>
+            Wednesday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Thursday">
+            <summary>
+            Thursday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Friday">
+            <summary>
+            Friday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.Saturday">
+            <summary>
+            Saturday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayMatch.None">
+            <summary>
+            Sunday
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Enums.DayOrder">
+            <summary>
+                Day order within a date expression
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.First">
+            <summary>
+            First
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.Second">
+            <summary>
+            Second
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.Third">
+            <summary>
+            Third
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.Fourth">
+            <summary>
+            Fourth
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.Fifth">
+            <summary>
+            Fifth
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.Last">
+            <summary>
+            Last
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayOrder.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Enums.DayType">
+            <summary>
+                Day type within a date expression
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayType.Day">
+            <summary>
+            Day
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayType.DayOfWeek">
+            <summary>
+            Day of Week
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayType.DayOfMonth">
+            <summary>
+            Day of Month
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayType.Weekday">
+            <summary>
+            Weekday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.DayType.NoMatch">
+            <summary>
+            No match
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Holidays">
+            <summary>
+                Holidays methods
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.Holidays.ValidateCountry(System.String)">
+            <summary>
+                Validate that a correct country code has been passed
+            </summary>
+            <param name="countryCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Holidays.ValidateHolidays(System.Collections.Generic.IEnumerable{Lurgle.Dates.Classes.AbstractApiHolidays},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Boolean,System.Boolean)">
+            <summary>
+                Validate AbstractAPI Holidays API output based on a given set of rules for holiday types, locales, and
+                including/excluding bank holidays and weekends
+            </summary>
+            <param name="holidayList"></param>
+            <param name="holidayMatch"></param>
+            <param name="localeMatch"></param>
+            <param name="includeBank"></param>
+            <param name="includeWeekends"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lurgle.Dates.WebClient">
+            <summary>
+                Web access methods
+            </summary>
+        </member>
+        <member name="M:Lurgle.Dates.WebClient.SetConfig(System.String,System.Boolean,System.String,System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+                Configure Flurl.Http to use an ApiClient, given the configured parameters
+            </summary>
+            <param name="appName"></param>
+            <param name="useProxy"></param>
+            <param name="proxy"></param>
+            <param name="proxyUser"></param>
+            <param name="proxyPass"></param>
+            <param name="proxyBypass"></param>
+            <param name="localUrls"></param>
+        </member>
+        <member name="M:Lurgle.Dates.WebClient.GetUrl(System.String,System.String,System.DateTime)">
+            <summary>
+                Return an AbstractAPI Holidays API URL, given an API key, country, and date
+            </summary>
+            <param name="apiKey"></param>
+            <param name="country"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.WebClient.GetHolidays(System.String,System.String,System.DateTime)">
+            <summary>
+                Retrieve an AbstractAPI Holidays API result, given API key, country, and date
+            </summary>
+            <param name="apiKey"></param>
+            <param name="country"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
