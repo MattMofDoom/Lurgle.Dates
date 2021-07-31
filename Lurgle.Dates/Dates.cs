@@ -190,7 +190,7 @@ namespace Lurgle.Dates
                     let resultDay = dayExpression.Date
                     where dayExpression.DayType != DayType.NoMatch
                     select new DateTime(dayExpression.Date.Year, dayExpression.Date.Month,
-                            dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Minute)
+                            dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Second)
                         .ToUniversalTime()
                     into resultDay
                     where !dayResult.Contains(resultDay)
@@ -231,7 +231,7 @@ namespace Lurgle.Dates
                     let resultDay = dayExpression.Date
                     where dayExpression.DayType != DayType.NoMatch
                     select new DateTime(dayExpression.Date.Year, dayExpression.Date.Month,
-                        dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Minute)
+                        dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Second)
                     into resultDay
                     where !dayResult.Contains(resultDay)
                     select resultDay)
