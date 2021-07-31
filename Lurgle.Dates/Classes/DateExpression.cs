@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Lurgle.Dates.Enums;
 
-namespace Lurgle.Dates
+namespace Lurgle.Dates.Classes
 {
     /// <summary>
     ///     Date Expression comprising the day order, day type, day of week, and day of month
@@ -21,12 +20,12 @@ namespace Lurgle.Dates
             DayOrder = order;
             DayType = type;
             DayOfWeek = weekday;
-            Day = dayofmonth;
+            Date = dayofmonth;
         } // ReSharper disable MemberCanBePrivate.Global
         // ReSharper disable UnusedAutoPropertyAccessor.Global
         public DayOrder DayOrder { get; }
         public DayType DayType { get; }
         public DayOfWeek DayOfWeek { get; }
-        public DateTime Day { get; }
+        public DateTime Date { get; }
     }
 }

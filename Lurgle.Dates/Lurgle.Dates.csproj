@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,6 +7,11 @@
     <PackageIcon>dates.png</PackageIcon>
     <PackageIconUrl />
     <Authors>Matt Marlor</Authors>
+    <PackageProjectUrl>https://github.com/MattMofDoom/Lurgle.Dates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MattMofDoom/Lurgle.Dates</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>Lurgle date expression token calculation</PackageTags>
+    <Description>A common library for calculating date expressions and formatting date tokens</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +28,8 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="$(OutDir)/**/*" Exclude="$(OutDir)/$(MSBuildProjectName).dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
+    <None Include="$(OutDir)/**/*" Exclude="$(OutDir)/$(MSBuildProjectName).dll" Pack="true"
+          PackagePath="lib/$(TargetFramework)" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lurgle.Dates
+namespace Lurgle.Dates.Enums
 {
     /// <summary>
     ///     Match days of week, or none

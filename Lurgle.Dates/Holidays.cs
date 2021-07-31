@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Lurgle.Dates;
+using Lurgle.Dates.Classes;
 
-namespace Seq.App.EventSchedule.Classes
+// ReSharper disable UnusedMember.Global
+
+namespace Lurgle.Dates
 {
     /// <summary>
     ///     Holidays methods

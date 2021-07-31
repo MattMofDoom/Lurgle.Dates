@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using Flurl.Http.Configuration;
 
-namespace Lurgle.Dates
+namespace Lurgle.Dates.Classes
 {
     /// <summary>
     ///     HTTP Client for retrieving Holidays API

@@ -1,4 +1,4 @@
-﻿namespace Lurgle.Dates
+﻿namespace Lurgle.Dates.Enums
 {
     /// <summary>
     ///     Day order within a date expression

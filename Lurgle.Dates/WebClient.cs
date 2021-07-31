@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Lurgle.Dates.Classes;
+
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Global
+
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace Lurgle.Dates
 {
@@ -20,7 +26,7 @@ namespace Lurgle.Dates
         /// <param name="proxyPass"></param>
         /// <param name="proxyBypass"></param>
         /// <param name="localUrls"></param>
-        public static void SetFlurlConfig(string appName, bool useProxy, string proxy = null, string proxyUser = null,
+        public static void SetConfig(string appName, bool useProxy, string proxy = null, string proxyUser = null,
             string proxyPass = null, bool proxyBypass = false, string[] localUrls = null)
         {
             FlurlHttp.Configure(config =>

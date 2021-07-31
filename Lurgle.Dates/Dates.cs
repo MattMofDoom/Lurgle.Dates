@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Lurgle.Dates.Classes;
+using Lurgle.Dates.Enums;
+
+// ReSharper disable UnusedMember.Global
 
 namespace Lurgle.Dates
 {
-     /// <summary>
+    /// <summary>
     ///     Date calculations for inclusions/exclusions
     /// </summary>
     public static class Dates
@@ -128,22 +132,15 @@ namespace Lurgle.Dates
             switch (day.ToLower())
             {
                 case "first":
-                    //Month rollover - if the next local start is the last day of the month, ensure that we are returning next month's first day
-                    //if (dateNow.Day == lastDay.Day && dateNow.Month == lastDay.Month)
-                    //if (dateNow.Day > 1)
-                    if (dateNow.Day > 1)
-                        return GetDayOfMonth(DayOrder.First, DayType.DayOfMonth, DayMatch.None, firstDay.AddMonths(1));
-                    else
-                        return GetDayOfMonth(DayOrder.First, DayType.DayOfMonth, DayMatch.None, firstDay);
+                    return GetDayOfMonth(DayOrder.First, DayType.DayOfMonth, DayMatch.None,
+                        dateNow.Day > 1 ? firstDay.AddMonths(1) : firstDay);
                 case "last":
                     return GetDayOfMonth(DayOrder.Last, DayType.DayOfMonth, DayMatch.None, lastDay);
                 case "first weekday":
-                    //Month rollover - if the next local start is the last day of the month, ensure that we are returning next month's first day
-                    if (dateNow.Day == lastDay.Day && dateNow.Month == lastDay.Month)
-                        return GetDayOfMonth(DayOrder.First, DayType.Weekday, DayMatch.None, firstDay.AddMonths(1));
-                    else
-                        return GetDayOfMonth(DayOrder.First, DayType.Weekday, DayMatch.None, firstDay);
-
+                    var weekday = GetDayOfMonth(DayOrder.First, DayType.Weekday, DayMatch.None, firstDay);
+                    return weekday.Date < dateNow
+                        ? GetDayOfMonth(DayOrder.First, DayType.Weekday, DayMatch.None, firstDay.AddMonths(1))
+                        : weekday;
                 case "last weekday":
                     return GetDayOfMonth(DayOrder.Last, DayType.Weekday, DayMatch.None, lastDay);
                 default:
@@ -156,11 +153,12 @@ namespace Lurgle.Dates
                     if (!Enum.TryParse(dayExpressionString[1], true, out DayMatch dayMatch))
                         return new DateExpression(DayOrder.None, DayType.NoMatch, DayOfWeek.Sunday, dateNow);
                     //Month rollover - if the next local start is the last day of the month, ensure that we are returning next month's first day
-                    if (dayExpression == DayOrder.First && dateNow.Day == lastDay.Day &&
-                        dateNow.Month == lastDay.Month)
+                    var dayOfMonth = GetDayOfMonth(dayExpression, DayType.DayOfWeek, dayMatch, firstDay);
+                    if (dayExpression == DayOrder.First && dayOfMonth.Date < dateNow)
                         return GetDayOfMonth(dayExpression, DayType.DayOfWeek, dayMatch,
                             firstDay.AddMonths(1));
-                    return GetDayOfMonth(dayExpression, DayType.DayOfWeek, dayMatch, firstDay);
+                    else
+                        return dayOfMonth;
             }
         }
 
@@ -170,10 +168,12 @@ namespace Lurgle.Dates
         /// <param name="dateExpression"></param>
         /// <param name="startTime"></param>
         /// <param name="startFormat"></param>
+        /// <param name="timeNow"></param>
         /// <returns></returns>
-        public static List<int> GetUtcDaysOfMonth(string dateExpression, string startTime, string startFormat, DateTime timeNow)
+        public static List<DateTime> GetUtcDaysOfMonth(string dateExpression, string startTime, string startFormat,
+            DateTime timeNow)
         {
-            var dayResult = new List<int>();
+            var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
                 var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
@@ -183,34 +183,38 @@ namespace Lurgle.Dates
                     DateTimeStyles.None);
                 //Always calculate based on next start
                 if (localStart < timeNow) localStart = localStart.AddDays(1);
-                
-                foreach (var resultDay in from day in dayList
-                    select GetDayType(day, timeNow)
+
+                foreach (var resultDay in from resultDate in dayList
+                    select GetDayType(resultDate, timeNow)
                     into dayExpression
+                    let resultDay = dayExpression.Date
                     where dayExpression.DayType != DayType.NoMatch
-                    select new DateTime(dayExpression.Day.Year, dayExpression.Day.Month, dayExpression.Day.Day,
-                        localStart.Hour, localStart.Minute, localStart.Second).ToUniversalTime()
+                    select new DateTime(dayExpression.Date.Year, dayExpression.Date.Month,
+                            dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Minute)
+                        .ToUniversalTime()
                     into resultDay
-                    where !dayResult.Contains(resultDay.Day)
+                    where !dayResult.Contains(resultDay)
                     select resultDay)
-                    dayResult.Add(resultDay.Day);
+                    dayResult.Add(resultDay);
             }
 
             dayResult.Sort();
             return dayResult;
         }
 
-        
+
         /// <summary>
         ///     Return the UTC days of month that are included/excluded, given a date expression and start time
         /// </summary>
         /// <param name="dateExpression"></param>
         /// <param name="startTime"></param>
         /// <param name="startFormat"></param>
+        /// <param name="timeNow"></param>
         /// <returns></returns>
-        public static List<int> GetDaysOfMonth(string dateExpression, string startTime, string startFormat, DateTime timeNow)
+        public static List<DateTime> GetDaysOfMonth(string dateExpression, string startTime, string startFormat,
+            DateTime timeNow)
         {
-            var dayResult = new List<int>();
+            var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
                 var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
@@ -221,16 +225,17 @@ namespace Lurgle.Dates
                 //Always calculate based on next start
                 if (localStart < timeNow) localStart = localStart.AddDays(1);
 
-                foreach (var resultDay in from day in dayList
-                    select GetDayType(day, timeNow)
+                foreach (var resultDay in from resultDate in dayList
+                    select GetDayType(resultDate, timeNow)
                     into dayExpression
+                    let resultDay = dayExpression.Date
                     where dayExpression.DayType != DayType.NoMatch
-                    select new DateTime(dayExpression.Day.Year, dayExpression.Day.Month, dayExpression.Day.Day,
-                        localStart.Hour, localStart.Minute, localStart.Second)
+                    select new DateTime(dayExpression.Date.Year, dayExpression.Date.Month,
+                        dayExpression.Date.Day, localStart.Hour, localStart.Minute, localStart.Minute)
                     into resultDay
-                    where !dayResult.Contains(resultDay.Day)
+                    where !dayResult.Contains(resultDay)
                     select resultDay)
-                    dayResult.Add(resultDay.Day);
+                    dayResult.Add(resultDay);
             }
 
             dayResult.Sort();

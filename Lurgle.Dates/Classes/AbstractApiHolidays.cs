@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Lurgle.Dates
+namespace Lurgle.Dates.Classes
 {
     /// <summary>
     ///     AbstractAPI Holidays API format
