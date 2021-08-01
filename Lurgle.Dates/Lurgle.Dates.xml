@@ -28,82 +28,82 @@
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Name">
             <summary>
-            Name
+                Name
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Name_Local">
             <summary>
-            Local Name
+                Local Name
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Language">
             <summary>
-            Language
+                Language
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Description">
             <summary>
-            Description
+                Description
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Country">
             <summary>
-            Country
+                Country
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Location">
             <summary>
-            Location
+                Location
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Locations">
             <summary>
-            List of locations
+                List of locations
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Type">
             <summary>
-            Holiday type
+                Holiday type
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.LocalStart">
             <summary>
-            Local start time
+                Local start time
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.UtcStart">
             <summary>
-            UTC start time
+                UTC start time
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.UtcEnd">
             <summary>
-            UTC end time
+                UTC end time
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.Date">
             <summary>
-            Date in MM/dd/yy format
+                Date in MM/dd/yy format
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateYear">
             <summary>
-            Year of holiday
+                Year of holiday
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateMonth">
             <summary>
-            Month of holiday
+                Month of holiday
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.DateDay">
             <summary>
-            Day of holiday
+                Day of holiday
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.AbstractApiHolidays.WeekDay">
             <summary>
-            Weekday of holiday
+                Weekday of holiday
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Classes.ApiClient">
@@ -152,39 +152,39 @@
         </member>
         <member name="P:Lurgle.Dates.Classes.DateExpression.DayOrder">
             <summary>
-            Order of day in month
+                Order of day in month
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.DateExpression.DayType">
             <summary>
-            Type of day in month
+                Type of day in month
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.DateExpression.DayOfWeek">
             <summary>
-            Day of week in month
+                Day of week in month
             </summary>
         </member>
         <member name="P:Lurgle.Dates.Classes.DateExpression.Date">
             <summary>
-            Date in month
+                Date in month
             </summary>
         </member>
         <member name="T:Lurgle.Dates.DateParse">
             <summary>
-            Parse date strings with optional expressions
+                Parse date strings with optional expressions
             </summary>
         </member>
         <member name="M:Lurgle.Dates.DateParse.GetDateTimeUtc(System.String)">
             <summary>
-            Parse a time string with optional expressions as UTC
+                Parse a time string with optional expressions as UTC
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateParse.GetDateTime(System.String)">
             <summary>
-            Parse a time string with optional expressions
+                Parse a time string with optional expressions
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -254,33 +254,33 @@
         </member>
         <member name="T:Lurgle.Dates.DateTokens">
             <summary>
-            Process date tokens
+                Process date tokens
             </summary>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.ValidDate(System.String)">
             <summary>
-            Validate that a valid date has been passed in yyyy-MM-dd format
+                Validate that a valid date has been passed in yyyy-MM-dd format
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.ValidDateExpression(System.String)">
             <summary>
-            Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+                Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.SetValidExpression(System.String)">
             <summary>
-            Ensure that a date expression passed is valid including spaces to separate
+                Ensure that a date expression passed is valid including spaces to separate
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
             <summary>
-            Handle a list of tokens
+                Handle a list of tokens
             </summary>
             <param name="values"></param>
             <param name="token"></param>
@@ -288,7 +288,7 @@
         </member>
         <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.String,System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
             <summary>
-            Handle date token replacement
+                Handle date token replacement
             </summary>
             <param name="value"></param>
             <param name="token"></param>
@@ -301,42 +301,42 @@
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Sunday">
             <summary>
-            Sunday
+                Sunday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Monday">
             <summary>
-            Monday
+                Monday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Tuesday">
             <summary>
-            Tuesday
+                Tuesday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Wednesday">
             <summary>
-            Wednesday
+                Wednesday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Thursday">
             <summary>
-            Thursday
+                Thursday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Friday">
             <summary>
-            Friday
+                Friday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.Saturday">
             <summary>
-            Saturday
+                Saturday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayMatch.None">
             <summary>
-            Sunday
+                Sunday
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Enums.DayOrder">
@@ -346,37 +346,37 @@
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.First">
             <summary>
-            First
+                First
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.Second">
             <summary>
-            Second
+                Second
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.Third">
             <summary>
-            Third
+                Third
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.Fourth">
             <summary>
-            Fourth
+                Fourth
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.Fifth">
             <summary>
-            Fifth
+                Fifth
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.Last">
             <summary>
-            Last
+                Last
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayOrder.None">
             <summary>
-            None
+                None
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Enums.DayType">
@@ -386,27 +386,27 @@
         </member>
         <member name="F:Lurgle.Dates.Enums.DayType.Day">
             <summary>
-            Day
+                Day
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayType.DayOfWeek">
             <summary>
-            Day of Week
+                Day of Week
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayType.DayOfMonth">
             <summary>
-            Day of Month
+                Day of Month
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayType.Weekday">
             <summary>
-            Weekday
+                Weekday
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.DayType.NoMatch">
             <summary>
-            No match
+                No match
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Holidays">

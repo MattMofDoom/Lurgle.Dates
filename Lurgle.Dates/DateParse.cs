@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Lurgle.Dates
 {
     /// <summary>
-    /// Parse date strings with optional expressions
+    ///     Parse date strings with optional expressions
     /// </summary>
     public static class DateParse
     {
         /// <summary>
-        /// Parse a time string with optional expressions as UTC
+        ///     Parse a time string with optional expressions as UTC
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -22,7 +20,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        /// Parse a time string with optional expressions
+        ///     Parse a time string with optional expressions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -31,7 +29,7 @@ namespace Lurgle.Dates
             return ParseDateTime(value);
         }
 
-                private static DateTime? ParseDateTimeUtc(string value)
+        private static DateTime? ParseDateTimeUtc(string value)
         {
             if (string.IsNullOrEmpty(value))
                 return null;
@@ -55,7 +53,8 @@ namespace Lurgle.Dates
                 if (Regex.IsMatch(value, dateExpression))
                 {
                     var match = Regex.Match(value, dateExpression);
-                    return ParseDateExpressionUtc(now, match.Groups[1].Value, int.Parse(match.Groups[2].Value), match.Groups[3].Value);
+                    return ParseDateExpressionUtc(now, match.Groups[1].Value, int.Parse(match.Groups[2].Value),
+                        match.Groups[3].Value);
                 }
 
                 //Parse a hybrid date expression with time if specified
@@ -66,7 +65,8 @@ namespace Lurgle.Dates
                     var match = Regex.Match(value, hybridExpression);
                     var relativeTime = ParseTimeStringUtc(match.Groups[4].Value);
                     return relativeTime != null
-                        ? ParseDateExpressionUtc(((DateTime) relativeTime).ToLocalTime(), match.Groups[1].Value, int.Parse(match.Groups[2].Value),
+                        ? ParseDateExpressionUtc(((DateTime) relativeTime).ToLocalTime(), match.Groups[1].Value,
+                            int.Parse(match.Groups[2].Value),
                             match.Groups[3].Value)
                         : null;
                 }
@@ -107,7 +107,8 @@ namespace Lurgle.Dates
                 if (Regex.IsMatch(value, dateExpression))
                 {
                     var match = Regex.Match(value, dateExpression);
-                    return ParseDateExpression(now, match.Groups[1].Value, int.Parse(match.Groups[2].Value), match.Groups[3].Value);
+                    return ParseDateExpression(now, match.Groups[1].Value, int.Parse(match.Groups[2].Value),
+                        match.Groups[3].Value);
                 }
 
                 //Parse a hybrid date expression with time if specified
@@ -118,7 +119,8 @@ namespace Lurgle.Dates
                     var match = Regex.Match(value, hybridExpression);
                     var relativeTime = ParseTimeString(match.Groups[4].Value);
                     return relativeTime != null
-                        ? ParseDateExpression((DateTime) relativeTime, match.Groups[1].Value, int.Parse(match.Groups[2].Value),
+                        ? ParseDateExpression((DateTime) relativeTime, match.Groups[1].Value,
+                            int.Parse(match.Groups[2].Value),
                             match.Groups[3].Value)
                         : null;
                 }
@@ -135,13 +137,8 @@ namespace Lurgle.Dates
             }
         }
 
-        enum OperationType
-        {
-            Add,
-            Subtract
-        }
-
-        private static DateTime? ParseDateExpressionUtc(DateTime startTime, string operation, int time, string expression)
+        private static DateTime? ParseDateExpressionUtc(DateTime startTime, string operation, int time,
+            string expression)
         {
             var operationType = "-";
 
@@ -151,17 +148,29 @@ namespace Lurgle.Dates
             switch (expression)
             {
                 case "s":
-                    return operationType == "+" ? startTime.AddSeconds(time).ToUniversalTime() : startTime.AddSeconds(-time).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddSeconds(time).ToUniversalTime()
+                        : startTime.AddSeconds(-time).ToUniversalTime();
                 case "m":
-                    return operationType == "+" ? startTime.AddMinutes(time).ToUniversalTime() : startTime.AddMinutes(-time).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddMinutes(time).ToUniversalTime()
+                        : startTime.AddMinutes(-time).ToUniversalTime();
                 case "h":
-                    return operationType == "+" ? startTime.AddHours(time).ToUniversalTime() : startTime.AddHours(-time).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddHours(time).ToUniversalTime()
+                        : startTime.AddHours(-time).ToUniversalTime();
                 case "d":
-                    return operationType == "+" ? startTime.AddDays(time).ToUniversalTime() : startTime.AddDays(-time).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddDays(time).ToUniversalTime()
+                        : startTime.AddDays(-time).ToUniversalTime();
                 case "w":
-                    return operationType == "+" ? startTime.AddDays(7 * time).ToUniversalTime() : startTime.AddDays(-(7 * time)).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddDays(7 * time).ToUniversalTime()
+                        : startTime.AddDays(-(7 * time)).ToUniversalTime();
                 case "M":
-                    return operationType == "+" ? startTime.AddMonths(time).ToUniversalTime() : startTime.AddMonths(-time).ToUniversalTime();
+                    return operationType == "+"
+                        ? startTime.AddMonths(time).ToUniversalTime()
+                        : startTime.AddMonths(-time).ToUniversalTime();
                 default:
                     return null;
             }
@@ -192,6 +201,7 @@ namespace Lurgle.Dates
                     return null;
             }
         }
+
         private static DateTime? ParseTimeStringUtc(string time)
         {
             var timeFormat = "H:mm:ss";

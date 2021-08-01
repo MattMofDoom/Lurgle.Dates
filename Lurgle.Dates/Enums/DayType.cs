@@ -6,23 +6,27 @@
     public enum DayType
     {
         /// <summary>
-        /// Day
+        ///     Day
         /// </summary>
         Day = 0,
+
         /// <summary>
-        /// Day of Week
+        ///     Day of Week
         /// </summary>
         DayOfWeek = 1,
+
         /// <summary>
-        /// Day of Month
+        ///     Day of Month
         /// </summary>
         DayOfMonth = 2,
+
         /// <summary>
-        /// Weekday
+        ///     Weekday
         /// </summary>
         Weekday = 3,
+
         /// <summary>
-        /// No match
+        ///     No match
         /// </summary>
         NoMatch = -1
     }

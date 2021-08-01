@@ -38,22 +38,22 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
                 //Test last day of month
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
-                var dates = Dates.GetUtcDaysOfMonth("last", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                var dates = Dates.GetUtcDaysOfMonth("last", $"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0},  Last {0:MMMM} (UTC) : {1}", timeNow, string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1).ToUniversalTime());
 
                 //Test first day of month
-                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2}", timeNow.ToUniversalTime(),
@@ -62,18 +62,18 @@ namespace Lurgle.Dates.Tests
 
 
                 //Test first day of month on 2nd last day of month
-                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{date.Value - 1} 9:00",
+                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{value - 1} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First-1 {1:MMMM} (UTC) : {2}", DateTime.ParseExact(
-                        $"{DateTime.Today.Year}-{date.Key}-{date.Value - 1} 8:00",
+                        $"{DateTime.Today.Year}-{key}-{value - 1} 8:00",
                         "yyyy-M-d H:mm", CultureInfo.InvariantCulture, DateTimeStyles.None).ToUniversalTime(),
                     timeNow.AddMonths(1), string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1).AddDays(1).ToUniversalTime());
 
-                dates = Dates.GetUtcDaysOfMonth("1", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetUtcDaysOfMonth("1", $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
-                _testOutputHelper.WriteLine("{0},  1 {1:MMMM} : {2}", timeNow, timeNow.AddMonths(1).ToUniversalTime(), 
+                _testOutputHelper.WriteLine("{0},  1 {1:MMMM} : {2}", timeNow, timeNow.AddMonths(1).ToUniversalTime(),
                     string.Join(',', dates));
 
                 Assert.True(dates[0] == timeNow.AddHours(1).AddDays(1).ToUniversalTime());
@@ -102,34 +102,35 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
                 //Test last day of month
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{1} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{1} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
-                var dates = Dates.GetDaysOfMonth("last", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00",
+                var dates = Dates.GetDaysOfMonth("last", $"{DateTime.Today.Year}-{key}-{1} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0},  Last {0:MMMM} : {1}", timeNow, string.Join(',', dates));
-                Assert.True(dates[0]  == DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                Assert.True(dates[0] == DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None));
 
                 //Test first day of month
-                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{1} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {0:MMMM} : {1}", timeNow, string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1));
 
-                dates = Dates.GetDaysOfMonth("1", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetDaysOfMonth("1", $"{DateTime.Today.Year}-{key}-{1} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, 1 {0:MMMM} : {1}", timeNow, string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1));
             }
         }
+
         [Fact]
         public void UtcDaysOfMonthDay1()
         {
@@ -152,30 +153,30 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
                 //Test last day of month
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{1} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{1} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
-                var dates = Dates.GetUtcDaysOfMonth("last", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00",
+                var dates = Dates.GetUtcDaysOfMonth("last", $"{DateTime.Today.Year}-{key}-{1} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0},  Last {0:MMMM} (UTC) : {1}", timeNow, string.Join(',', dates));
-                Assert.True(dates[0]  == DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                Assert.True(dates[0] == DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None).ToUniversalTime());
 
                 //Test first day of month
-                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetUtcDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{1} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2}", timeNow.ToUniversalTime(),
                     timeNow.AddMonths(1).ToUniversalTime(), string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1).ToUniversalTime());
 
-                dates = Dates.GetUtcDaysOfMonth("1", $"{DateTime.Today.Year}-{date.Key}-{1} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetUtcDaysOfMonth("1", $"{DateTime.Today.Year}-{key}-{1} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, 1 {1:MMMM} (UTC) : {2}", timeNow.ToUniversalTime(),
                     timeNow.AddMonths(1).ToUniversalTime(), string.Join(',', dates));
@@ -206,15 +207,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
                 var dates = Dates.GetUtcDaysOfMonth("first weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow.AddMonths(1), dates[0]);
@@ -247,15 +248,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
                 var dates = Dates.GetDaysOfMonth("first weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, Last Weekday {1:MMMM} (UTC) : {2:F}", timeNow,
                     timeNow.AddMonths(1), dates[0]);
@@ -263,7 +264,7 @@ namespace Lurgle.Dates.Tests
             }
         }
 
-                [Fact]
+        [Fact]
         public void UtcDaysOfMonthWeekdayLastDay1()
         {
             var feb = 28;
@@ -285,15 +286,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, _) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-1 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-1 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
                 var dates = Dates.GetUtcDaysOfMonth("last weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-1 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-1 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow, dates[0]);
@@ -326,15 +327,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, _) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-1 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-1 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
                 var dates = Dates.GetDaysOfMonth("last weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-1 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-1 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, Last Weekday {1:MMMM} : {2:F}", timeNow,
                     timeNow, dates[0]);
@@ -342,7 +343,7 @@ namespace Lurgle.Dates.Tests
             }
         }
 
-                        [Fact]
+        [Fact]
         public void UtcDaysOfMonthWeekdayLast()
         {
             var feb = 28;
@@ -364,15 +365,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
                 //If the last weekday has passed, this will return the last weekday of next month
                 var dates = Dates.GetUtcDaysOfMonth("last weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow, dates[0]);
@@ -405,15 +406,15 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
                 //If the last weekday has passed, this will return the last weekday of next month
                 var dates = Dates.GetDaysOfMonth("last weekday",
-                    $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                    $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, Last Weekday {1:MMMM} : {2:F}", timeNow,
                     timeNow, dates[0]);
@@ -443,9 +444,9 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
@@ -457,7 +458,7 @@ namespace Lurgle.Dates.Tests
                 })
                 {
                     var dates = Dates.GetUtcDaysOfMonth("first " + m,
-                        $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                        $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                         timeNow);
 
                     _testOutputHelper.WriteLine("{0:F}: First {1}, {2:F}", timeNow.ToUniversalTime(), m,
@@ -494,9 +495,9 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, _) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-1 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-1 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
@@ -508,7 +509,7 @@ namespace Lurgle.Dates.Tests
                 })
                 {
                     var dates = Dates.GetUtcDaysOfMonth("first " + m,
-                        $"{DateTime.Today.Year}-{date.Key}-1 9:00", "yyyy-M-d H:mm",
+                        $"{DateTime.Today.Year}-{key}-1 9:00", "yyyy-M-d H:mm",
                         timeNow);
 
                     _testOutputHelper.WriteLine("{0:F}: First {1}, {2:F}", timeNow.ToUniversalTime(), m,
@@ -545,9 +546,9 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
@@ -559,7 +560,7 @@ namespace Lurgle.Dates.Tests
                 })
                 {
                     var dates = Dates.GetDaysOfMonth("first " + m,
-                        $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                        $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                         timeNow);
                     _testOutputHelper.WriteLine("{0}, First {1} in {2:MMMM} : {3}", timeNow, m,
                         timeNow.AddMonths(1), string.Join(',', dates));
@@ -591,22 +592,22 @@ namespace Lurgle.Dates.Tests
                 {12, 31}
             };
 
-            foreach (var date in monthEnds)
+            foreach (var (key, value) in monthEnds)
             {
                 //Test last day of month
-                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{date.Key}-{date.Value} 8:00",
+                var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{key}-{value} 8:00",
                     "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
                 _testOutputHelper.WriteLine("{0:MMM}\n----", timeNow);
 
-                var dates = Dates.GetDaysOfMonth("last", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                var dates = Dates.GetDaysOfMonth("last", $"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0},  Last {0:MMMM} (UTC) : {1}", timeNow, string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1));
 
                 //Test first day of month
-                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00",
+                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{value} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2}", timeNow,
@@ -615,16 +616,16 @@ namespace Lurgle.Dates.Tests
 
 
                 //Test first day of month on 2nd last day of month
-                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{date.Key}-{date.Value - 1} 9:00",
+                dates = Dates.GetDaysOfMonth("first", $"{DateTime.Today.Year}-{key}-{value - 1} 9:00",
                     "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First-1 {1:MMMM} (UTC) : {2}", DateTime.ParseExact(
-                        $"{DateTime.Today.Year}-{date.Key}-{date.Value - 1} 8:00",
+                        $"{DateTime.Today.Year}-{key}-{value - 1} 8:00",
                         "yyyy-M-d H:mm", CultureInfo.InvariantCulture, DateTimeStyles.None),
                     timeNow.AddMonths(1), string.Join(',', dates));
                 Assert.True(dates[0] == timeNow.AddHours(1).AddDays(1));
 
-                dates = Dates.GetDaysOfMonth("1", $"{DateTime.Today.Year}-{date.Key}-{date.Value} 9:00", "yyyy-M-d H:mm",
+                dates = Dates.GetDaysOfMonth("1", $"{DateTime.Today.Year}-{key}-{value} 9:00", "yyyy-M-d H:mm",
                     timeNow);
                 _testOutputHelper.WriteLine("{0},  1 {1:MMMM} : {2}", timeNow, timeNow.AddMonths(1),
                     string.Join(',', dates));
@@ -727,35 +728,57 @@ namespace Lurgle.Dates.Tests
             Assert.True(DateTokens.SetValidExpression("1d1m") == "1d 1m");
             Assert.True(DateTokens.SetValidExpression("1m") == "1m");
             Assert.True(DateTokens.SetValidExpression("1h") == "1h");
-        }
-
+        } // ReSharper disable PossibleInvalidOperationException
         [Fact]
         public void ParseDate()
         {
-            _testOutputHelper.WriteLine("30d - {0}", ((DateTime) DateParse.GetDateTime("30d")).ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTime("30d")).ToString("F") == DateTime.Now.AddDays(-30).ToString("F"));
-            _testOutputHelper.WriteLine("30d 9:00 - {0}", ((DateTime) DateParse.GetDateTime("30d 9:00")).ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTime("30d 9:00")).ToString("F") == DateTime.Today.AddHours(9).AddDays(-30).ToString("F"));
+            _testOutputHelper.WriteLine("30d - {0:F}", (DateTime) DateParse.GetDateTime("30d"));
 
-            _testOutputHelper.WriteLine("+30d - {0}", ((DateTime) DateParse.GetDateTime("+30d")).ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTime("+30d")).ToString("F") == DateTime.Now.AddDays(30).ToString("F"));
-            _testOutputHelper.WriteLine("+30d 9:00 - {0}", ((DateTime) DateParse.GetDateTime("+30d 9:00")).ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTime("+30d 9:00")).ToString("F") == DateTime.Today.AddHours(9).AddDays(30).ToString("F"));
+            Assert.True(((DateTime) DateParse.GetDateTime("30d")).ToString("F") ==
+                        DateTime.Now.AddDays(-30).ToString("F"));
+
+            _testOutputHelper.WriteLine("30d 9:00 - {0:F}", (DateTime) DateParse.GetDateTime("30d 9:00"));
+
+            Assert.True(((DateTime) DateParse.GetDateTime("30d 9:00")).ToString("F") ==
+                        DateTime.Today.AddHours(9).AddDays(-30).ToString("F"));
+
+
+            _testOutputHelper.WriteLine("+30d - {0:F}", (DateTime) DateParse.GetDateTime("+30d"));
+
+            Assert.True(((DateTime) DateParse.GetDateTime("+30d")).ToString("F") ==
+                        DateTime.Now.AddDays(30).ToString("F"));
+
+            _testOutputHelper.WriteLine("+30d 9:00 - {0:F}", (DateTime) DateParse.GetDateTime("+30d 9:00"));
+
+            Assert.True(((DateTime) DateParse.GetDateTime("+30d 9:00")).ToString("F") ==
+                        DateTime.Today.AddHours(9).AddDays(30).ToString("F"));
         }
 
         [Fact]
         public void ParseDateUtc()
         {
-            _testOutputHelper.WriteLine("30d - {0}", ((DateTime) DateParse.GetDateTimeUtc("30d")).ToUniversalTime().ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTimeUtc("30d")).ToString("F") == DateTime.Now.AddDays(-30).ToUniversalTime().ToString("F"));
-            _testOutputHelper.WriteLine("30d 9:00 - {0}", ((DateTime) DateParse.GetDateTimeUtc("30d 9:00")).ToUniversalTime().ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTimeUtc("30d 9:00")).ToString("F") == DateTime.Today.AddHours(9).AddDays(-30).ToUniversalTime().ToString("F"));
+            _testOutputHelper.WriteLine("30d - {0:F}", ((DateTime) DateParse.GetDateTimeUtc("30d")).ToUniversalTime());
 
-            _testOutputHelper.WriteLine("+30d - {0}", ((DateTime) DateParse.GetDateTime("+30d")).ToUniversalTime().ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTimeUtc("+30d")).ToString("F") == DateTime.Now.AddDays(30).ToUniversalTime().ToString("F"));
-            _testOutputHelper.WriteLine("+30d 9:00 - {0}", ((DateTime) DateParse.GetDateTime("+30d 9:00")).ToUniversalTime().ToString("F"));
-            Assert.True(((DateTime) DateParse.GetDateTimeUtc("+30d 9:00")).ToString("F") == DateTime.Today.AddHours(9).AddDays(30).ToUniversalTime().ToString("F"));
+            Assert.True(((DateTime) DateParse.GetDateTimeUtc("30d")).ToString("F") ==
+                        DateTime.Now.AddDays(-30).ToUniversalTime().ToString("F"));
+
+            _testOutputHelper.WriteLine("30d 9:00 - {0:F}",
+                ((DateTime) DateParse.GetDateTimeUtc("30d 9:00")).ToUniversalTime());
+
+            Assert.True(((DateTime) DateParse.GetDateTimeUtc("30d 9:00")).ToString("F") ==
+                        DateTime.Today.AddHours(9).AddDays(-30).ToUniversalTime().ToString("F"));
+
+
+            _testOutputHelper.WriteLine("+30d - {0:F}", ((DateTime) DateParse.GetDateTime("+30d")).ToUniversalTime());
+
+            Assert.True(((DateTime) DateParse.GetDateTimeUtc("+30d")).ToString("F") ==
+                        DateTime.Now.AddDays(30).ToUniversalTime().ToString("F"));
+
+            _testOutputHelper.WriteLine("+30d 9:00 - {0:F}",
+                ((DateTime) DateParse.GetDateTime("+30d 9:00")).ToUniversalTime());
+
+            Assert.True(((DateTime) DateParse.GetDateTimeUtc("+30d 9:00")).ToString("F") ==
+                        DateTime.Today.AddHours(9).AddDays(30).ToUniversalTime().ToString("F"));
         }
     }
-
 }

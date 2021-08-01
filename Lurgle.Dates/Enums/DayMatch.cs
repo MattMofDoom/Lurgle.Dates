@@ -9,35 +9,42 @@ namespace Lurgle.Dates.Enums
     public enum DayMatch
     {
         /// <summary>
-        /// Sunday
+        ///     Sunday
         /// </summary>
         Sunday = DayOfWeek.Sunday,
+
         /// <summary>
-        /// Monday
+        ///     Monday
         /// </summary>
         Monday = DayOfWeek.Monday,
+
         /// <summary>
-        /// Tuesday
+        ///     Tuesday
         /// </summary>
         Tuesday = DayOfWeek.Tuesday,
+
         /// <summary>
-        /// Wednesday
+        ///     Wednesday
         /// </summary>
         Wednesday = DayOfWeek.Wednesday,
+
         /// <summary>
-        /// Thursday
+        ///     Thursday
         /// </summary>
         Thursday = DayOfWeek.Thursday,
+
         /// <summary>
-        /// Friday
+        ///     Friday
         /// </summary>
         Friday = DayOfWeek.Friday,
+
         /// <summary>
-        /// Saturday
+        ///     Saturday
         /// </summary>
         Saturday = DayOfWeek.Saturday,
+
         /// <summary>
-        /// Sunday
+        ///     Sunday
         /// </summary>
         None = -1
     }
