@@ -7,31 +7,37 @@
     public enum DayOrder
     {
         /// <summary>
-        /// First
+        ///     First
         /// </summary>
         First = 0,
+
         /// <summary>
-        /// Second
+        ///     Second
         /// </summary>
         Second = 1,
+
         /// <summary>
-        /// Third
+        ///     Third
         /// </summary>
         Third = 2,
+
         /// <summary>
-        /// Fourth
+        ///     Fourth
         /// </summary>
         Fourth = 3,
+
         /// <summary>
-        /// Fifth
+        ///     Fifth
         /// </summary>
         Fifth = 4,
+
         /// <summary>
-        /// Last
+        ///     Last
         /// </summary>
         Last = 5,
+
         /// <summary>
-        /// None
+        ///     None
         /// </summary>
         None = -1
     }

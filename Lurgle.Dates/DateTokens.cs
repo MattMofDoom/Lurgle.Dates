@@ -10,12 +10,12 @@ using System.Text.RegularExpressions;
 namespace Lurgle.Dates
 {
     /// <summary>
-    /// Process date tokens
+    ///     Process date tokens
     /// </summary>
     public static class DateTokens
     {
         /// <summary>
-        /// Validate that a valid date has been passed in yyyy-MM-dd format
+        ///     Validate that a valid date has been passed in yyyy-MM-dd format
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -25,7 +25,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        /// Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+        ///     Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -35,7 +35,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        /// Ensure that a date expression passed is valid including spaces to separate
+        ///     Ensure that a date expression passed is valid including spaces to separate
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        /// Handle a list of tokens
+        ///     Handle a list of tokens
         /// </summary>
         /// <param name="values"></param>
         /// <param name="token"></param>
@@ -66,7 +66,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        /// Handle date token replacement
+        ///     Handle date token replacement
         /// </summary>
         /// <param name="value"></param>
         /// <param name="token"></param>

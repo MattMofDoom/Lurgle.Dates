@@ -64,67 +64,82 @@ namespace Lurgle.Dates.Classes
         // ReSharper disable UnusedAutoPropertyAccessor.Local
         // ReSharper disable UnusedAutoPropertyAccessor.Global
         /// <summary>
-        /// Name
+        ///     Name
         /// </summary>
         public string Name { get; }
+
         /// <summary>
-        /// Local Name
+        ///     Local Name
         /// </summary>
         public string Name_Local { get; }
+
         /// <summary>
-        /// Language
+        ///     Language
         /// </summary>
         public string Language { get; }
+
         /// <summary>
-        /// Description
+        ///     Description
         /// </summary>
         public string Description { get; }
+
         /// <summary>
-        /// Country
+        ///     Country
         /// </summary>
         public string Country { get; }
+
         /// <summary>
-        /// Location
+        ///     Location
         /// </summary>
         public string Location { get; }
+
         /// <summary>
-        /// List of locations
+        ///     List of locations
         /// </summary>
         public List<string> Locations { get; }
+
         /// <summary>
-        /// Holiday type
+        ///     Holiday type
         /// </summary>
         public string Type { get; }
+
         /// <summary>
-        /// Local start time
+        ///     Local start time
         /// </summary>
         public DateTime LocalStart { get; }
+
         /// <summary>
-        /// UTC start time
+        ///     UTC start time
         /// </summary>
         public DateTime UtcStart { get; }
+
         /// <summary>
-        /// UTC end time
+        ///     UTC end time
         /// </summary>
         public DateTime UtcEnd { get; }
+
         /// <summary>
-        /// Date in MM/dd/yy format
+        ///     Date in MM/dd/yy format
         /// </summary>
         public string Date { get; }
+
         /// <summary>
-        /// Year of holiday
+        ///     Year of holiday
         /// </summary>
         public string DateYear { get; }
+
         /// <summary>
-        /// Month of holiday
+        ///     Month of holiday
         /// </summary>
         public string DateMonth { get; }
+
         /// <summary>
-        /// Day of holiday
+        ///     Day of holiday
         /// </summary>
         public string DateDay { get; }
+
         /// <summary>
-        /// Weekday of holiday
+        ///     Weekday of holiday
         /// </summary>
         public string WeekDay { get; }
     }
