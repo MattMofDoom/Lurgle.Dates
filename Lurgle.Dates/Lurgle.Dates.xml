@@ -175,11 +175,18 @@
             Parse date strings with optional expressions
             </summary>
         </member>
+        <member name="M:Lurgle.Dates.DateParse.GetDateTimeUtc(System.String)">
+            <summary>
+            Parse a time string with optional expressions as UTC
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="M:Lurgle.Dates.DateParse.GetDateTime(System.String)">
             <summary>
             Parse a time string with optional expressions
             </summary>
-            <param name="configValue"></param>
+            <param name="value"></param>
             <returns></returns>
         </member>
         <member name="T:Lurgle.Dates.Dates">
@@ -195,14 +202,15 @@
             <param name="dayOrder"></param>
             <param name="dayType"></param>
             <param name="matchDay"></param>
-            <param name="nextStart"></param>
+            <param name="dateRef"></param>
             <returns></returns>
         </member>
-        <member name="M:Lurgle.Dates.Dates.GetDayType(System.String,System.DateTime)">
+        <member name="M:Lurgle.Dates.Dates.GetDayType(System.String,System.DateTime,System.DateTime)">
             <summary>
                 Return a date expression given the type of day, using the the next local day and month interval start
             </summary>
             <param name="day"></param>
+            <param name="localStart"></param>
             <param name="dateNow"></param>
             <returns></returns>
         </member>
