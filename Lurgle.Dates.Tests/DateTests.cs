@@ -297,6 +297,9 @@ namespace Lurgle.Dates.Tests
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow, dates[0]);
+                if (timeNow.ToUniversalTime() == timeNow)
+                    Assert.True(dates[0].DayOfWeek >= DayOfWeek.Monday && dates[0].DayOfWeek < DayOfWeek.Saturday);
+                else
                     Assert.True(dates[0].DayOfWeek >= DayOfWeek.Sunday && dates[0].DayOfWeek < DayOfWeek.Friday);
             }
         }
@@ -373,6 +376,9 @@ namespace Lurgle.Dates.Tests
                     timeNow);
                 _testOutputHelper.WriteLine("{0}, First {1:MMMM} (UTC) : {2:F}", timeNow.ToUniversalTime(),
                     timeNow, dates[0]);
+                if (timeNow.ToUniversalTime() == timeNow)
+                    Assert.True(dates[0].DayOfWeek >= DayOfWeek.Monday && dates[0].DayOfWeek < DayOfWeek.Saturday);
+                else
                     Assert.True(dates[0].DayOfWeek >= DayOfWeek.Sunday && dates[0].DayOfWeek < DayOfWeek.Friday);
             }
         }
