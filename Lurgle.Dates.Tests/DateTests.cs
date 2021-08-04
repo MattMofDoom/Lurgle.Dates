@@ -780,5 +780,11 @@ namespace Lurgle.Dates.Tests
             Assert.True(((DateTime) DateParse.GetDateTimeUtc("+30d 9:00")).ToString("F") ==
                         DateTime.Today.AddHours(9).AddDays(30).ToUniversalTime().ToString("F"));
         }
+
+        [Fact]
+        public void DateTokenCalculates()
+        {
+            Assert.True(DateTokens.CalculateDateExpression("30d") == DateTime.Today.AddDays(30));
+        }
     }
 }

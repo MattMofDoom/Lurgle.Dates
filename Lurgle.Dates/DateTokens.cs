@@ -17,7 +17,7 @@ namespace Lurgle.Dates
         /// <summary>
         ///     Validate that a valid date has been passed in yyyy-MM-dd format
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Date in yyyy-MM-dd format</param>
         /// <returns></returns>
         public static bool ValidDate(string value)
         {
@@ -27,7 +27,7 @@ namespace Lurgle.Dates
         /// <summary>
         ///     Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Date expression as any of Wd Xh Ym Zs</param>
         /// <returns></returns>
         public static bool ValidDateExpression(string value)
         {
@@ -51,6 +51,28 @@ namespace Lurgle.Dates
                 s.AppendFormat("{0}m", match.Groups[4].Value);
 
             return s.ToString().Trim();
+        }
+
+        /// <summary>
+        /// Return a valid date time from a date expression
+        /// </summary>
+        /// <param name="value">Date expression as any of Wd Xh Ym Zs</param>
+        /// <param name="startDate">Optional date time, defaults to DateTime.Now</param>
+        /// <returns></returns>
+        public static DateTime CalculateDateExpression(string value, DateTime? startDate = null)
+        {
+            var date = DateTime.Now;
+                if (startDate != null)
+                    date = (DateTime)startDate;
+
+            var match = Regex.Match(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
+            if (!string.IsNullOrEmpty(match.Groups[2].Value))
+                date = date.AddDays(int.Parse(match.Groups[2].Value));
+            if (!string.IsNullOrEmpty(match.Groups[3].Value))
+                date = date.AddHours(int.Parse(match.Groups[3].Value));
+            if (!string.IsNullOrEmpty(match.Groups[4].Value))
+                date = date.AddMinutes(int.Parse(match.Groups[4].Value));
+            return date;
         }
 
         /// <summary>
