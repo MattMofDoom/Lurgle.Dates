@@ -784,7 +784,7 @@ namespace Lurgle.Dates.Tests
         [Fact]
         public void DateTokenCalculates()
         {
-            Assert.True(DateTokens.CalculateDateExpression("30d").ToShortDateString() == DateTime.Now.AddDays(30).ToShortDateString());
+            Assert.True(DateTokens.CalculateDateExpression("1w 30d").ToShortDateString() == DateTime.Now.AddDays(37).ToShortDateString());
         }
     }
 }

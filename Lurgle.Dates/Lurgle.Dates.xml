@@ -266,29 +266,30 @@
         </member>
         <member name="M:Lurgle.Dates.DateTokens.ValidDateExpression(System.String)">
             <summary>
-                Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+                Validate that a valid date expression has been passed as Jira-style data expressions (eg. Ww Xd Yh Zm)
             </summary>
-            <param name="value">Date expression as any of Wd Xh Ym Zs</param>
+            <param name="value">Date expression as any of Ww Xd Yh Zm</param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.SetValidExpression(System.String)">
             <summary>
-                Ensure that a date expression passed is valid including spaces to separate
+                Ensure that a date expression passed is valid for Jira=style date expressions including spaces to separate (Ww Xd
+                Yh Zm)
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.CalculateDateExpression(System.String,System.Nullable{System.DateTime})">
             <summary>
-            Return a valid date time from a date expression
+                Return a valid date time from a date expression of Jira-style date expressions
             </summary>
-            <param name="value">Date expression as any of Wd Xh Ym Zs</param>
+            <param name="value">Date expression as any of Ww Xd Yh Zm</param>
             <param name="startDate">Optional date time, defaults to DateTime.Now</param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
             <summary>
-                Handle a list of tokens
+                Handle a list of tokens - simple date tokens, date expression tokens, LogToken/LogTokenLong keypair
             </summary>
             <param name="values"></param>
             <param name="token"></param>
@@ -296,7 +297,7 @@
         </member>
         <member name="M:Lurgle.Dates.DateTokens.HandleTokens(System.String,System.Nullable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
             <summary>
-                Handle date token replacement
+                Handle date token replacement - simple date tokens, date expression tokens, LogToken/LogTokenLong keypair
             </summary>
             <param name="value"></param>
             <param name="token"></param>

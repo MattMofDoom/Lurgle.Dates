@@ -25,58 +25,66 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        ///     Validate that a valid date expression has been passed as tokens (eg. Wd Xh Ym Zs)
+        ///     Validate that a valid date expression has been passed as Jira-style data expressions (eg. Ww Xd Yh Zm)
         /// </summary>
-        /// <param name="value">Date expression as any of Wd Xh Ym Zs</param>
+        /// <param name="value">Date expression as any of Ww Xd Yh Zm</param>
         /// <returns></returns>
         public static bool ValidDateExpression(string value)
         {
-            return Regex.IsMatch(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(value, "^((?:(\\d+)w\\s?)?(?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$",
+                RegexOptions.IgnoreCase);
         }
 
         /// <summary>
-        ///     Ensure that a date expression passed is valid including spaces to separate
+        ///     Ensure that a date expression passed is valid for Jira=style date expressions including spaces to separate (Ww Xd
+        ///     Yh Zm)
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static string SetValidExpression(string value)
         {
-            var match = Regex.Match(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
+            var match = Regex.Match(value, "^((?:(\\d+)w\\s?)?(?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$",
+                RegexOptions.IgnoreCase);
             var s = new StringBuilder();
             if (!string.IsNullOrEmpty(match.Groups[2].Value))
-                s.AppendFormat("{0}d ", match.Groups[2].Value);
+                s.AppendFormat("{0}w ", match.Groups[2].Value);
             if (!string.IsNullOrEmpty(match.Groups[3].Value))
-                s.AppendFormat("{0}h ", match.Groups[3].Value);
+                s.AppendFormat("{0}d ", match.Groups[3].Value);
             if (!string.IsNullOrEmpty(match.Groups[4].Value))
-                s.AppendFormat("{0}m", match.Groups[4].Value);
+                s.AppendFormat("{0}h ", match.Groups[4].Value);
+            if (!string.IsNullOrEmpty(match.Groups[5].Value))
+                s.AppendFormat("{0}m", match.Groups[5].Value);
 
             return s.ToString().Trim();
         }
 
         /// <summary>
-        /// Return a valid date time from a date expression
+        ///     Return a valid date time from a date expression of Jira-style date expressions
         /// </summary>
-        /// <param name="value">Date expression as any of Wd Xh Ym Zs</param>
+        /// <param name="value">Date expression as any of Ww Xd Yh Zm</param>
         /// <param name="startDate">Optional date time, defaults to DateTime.Now</param>
         /// <returns></returns>
         public static DateTime CalculateDateExpression(string value, DateTime? startDate = null)
         {
             var date = DateTime.Now;
-                if (startDate != null)
-                    date = (DateTime)startDate;
+            if (startDate != null)
+                date = (DateTime) startDate;
 
-            var match = Regex.Match(value, "^((?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$", RegexOptions.IgnoreCase);
+            var match = Regex.Match(value, "^((?:(\\d+)w\\s?)?(?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$",
+                RegexOptions.IgnoreCase);
             if (!string.IsNullOrEmpty(match.Groups[2].Value))
-                date = date.AddDays(int.Parse(match.Groups[2].Value));
+                date = date.AddDays(int.Parse(match.Groups[2].Value) * 7);
             if (!string.IsNullOrEmpty(match.Groups[3].Value))
-                date = date.AddHours(int.Parse(match.Groups[3].Value));
+                date = date.AddDays(int.Parse(match.Groups[3].Value));
             if (!string.IsNullOrEmpty(match.Groups[4].Value))
-                date = date.AddMinutes(int.Parse(match.Groups[4].Value));
+                date = date.AddHours(int.Parse(match.Groups[4].Value));
+            if (!string.IsNullOrEmpty(match.Groups[5].Value))
+                date = date.AddMinutes(int.Parse(match.Groups[5].Value));
             return date;
         }
 
         /// <summary>
-        ///     Handle a list of tokens
+        ///     Handle a list of tokens - simple date tokens, date expression tokens, LogToken/LogTokenLong keypair
         /// </summary>
         /// <param name="values"></param>
         /// <param name="token"></param>
@@ -88,7 +96,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        ///     Handle date token replacement
+        ///     Handle date token replacement - simple date tokens, date expression tokens, LogToken/LogTokenLong keypair
         /// </summary>
         /// <param name="value"></param>
         /// <param name="token"></param>

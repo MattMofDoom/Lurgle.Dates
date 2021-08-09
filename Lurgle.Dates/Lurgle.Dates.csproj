@@ -12,8 +12,9 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
-    <Version>1.0.7</Version>
-    <PackageReleaseNotes>Add DateTokens.CalculateDateExpression to allow parsing a d m s y token to a DateTime</PackageReleaseNotes>
+    <Version>1.0.8</Version>
+    <PackageReleaseNotes>Add DateTokens.CalculateDateExpression to allow parsing a d h m token to a DateTime
+Add w to Jira-type date expressions</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
