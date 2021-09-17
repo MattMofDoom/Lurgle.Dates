@@ -796,15 +796,15 @@ namespace Lurgle.Dates.Tests
             var timeNow = DateTime.ParseExact($"{DateTime.Today.Year}-{DateTime.Today.Month}-{DateTime.Today.Day} 9:00",
                 "yyyy-M-d H:mm", CultureInfo.InvariantCulture,
                 DateTimeStyles.None);
-            _testOutputHelper.WriteLine(string.Join(",", Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wednesday,Thursday,Friday", "9:00", "H:mm").Select(d => d.ToString()).ToList()));
+            _testOutputHelper.WriteLine(string.Join(",", Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm").Select(d => d.ToString()).ToList()));
             if (timeNow.ToUniversalTime() == timeNow)
-                Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wednesday,Thursday,Friday", "9:00", "H:mm"),
+                Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm"),
                     new List<DayOfWeek>()
                     {
                         DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday
                     });
             else
-                Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wednesday,Thursday,Friday", "9:00", "H:mm"),
+                Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm"),
                     new List<DayOfWeek>()
                     {
                         DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday
@@ -814,8 +814,8 @@ namespace Lurgle.Dates.Tests
         [Fact]
         public void ParseDaysOfWeek()
         {
-            _testOutputHelper.WriteLine(string.Join(",", Dates.GetDaysOfWeek("Monday,Tuesday,Wednesday,Thursday,Friday").Select(d => d.ToString()).ToList()));
-            Assert.Equal(Dates.GetDaysOfWeek("Monday,Tuesday,Wednesday,Thursday,Friday"),
+            _testOutputHelper.WriteLine(string.Join(",", Dates.GetDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday").Select(d => d.ToString()).ToList()));
+            Assert.Equal(Dates.GetDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday"),
                 new List<DayOfWeek>()
                 {
                     DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday

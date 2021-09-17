@@ -270,18 +270,16 @@ namespace Lurgle.Dates
                     foreach (var day in dayArray)
                         if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek))
                         {
-                            if (localStart.ToUniversalTime().DayOfWeek < localStart.DayOfWeek ||
-                                localStart.DayOfWeek == 0 && (int) utcStart.DayOfWeek == 6)
-                            {
-                                if (dayOfWeek - 1 >= 0)
-                                    dayResult.Add(dayOfWeek - 1);
-                                else
-                                    dayResult.Add(DayOfWeek.Saturday);
-                            }
-                            else
-                            {
-                                dayResult.Add(dayOfWeek);
-                            }
+                            var dow = GetUtcDayOfWeek(localStart, utcStart, dayOfWeek);
+                            if (!dayResult.Contains(dow))
+                                dayResult.Add(dow);
+                        }
+                        else if  (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek))
+                        {
+                            var dow = GetUtcDayOfWeek(localStart, utcStart, (DayOfWeek)shortDayOfWeek);
+                            if (!dayResult.Contains(dow))
+                                dayResult.Add(dow);
+                            
                         }
             }
 
@@ -293,6 +291,17 @@ namespace Lurgle.Dates
                 };
 
             return dayResult;
+        }
+
+        private static DayOfWeek GetUtcDayOfWeek(DateTime localStart, DateTime utcStart, DayOfWeek dayOfWeek)
+        {
+            if (localStart.ToUniversalTime().DayOfWeek >= localStart.DayOfWeek &&
+                (localStart.DayOfWeek != 0 || (int)utcStart.DayOfWeek != 6)) return dayOfWeek;
+            if (dayOfWeek - 1 >= 0)
+                return dayOfWeek - 1;
+
+            return DayOfWeek.Saturday;
+
         }
 
         /// <summary>
@@ -313,9 +322,12 @@ namespace Lurgle.Dates
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
                     foreach (var day in dayArray)
-                        if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek))
+                        if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek) && !dayResult.Contains(dayOfWeek))
                         {
                             dayResult.Add(dayOfWeek);
+                        } else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek) && !dayResult.Contains((DayOfWeek)shortDayOfWeek))
+                        {
+                            dayResult.Add((DayOfWeek)shortDayOfWeek);
                         }
             }
 
@@ -343,11 +355,11 @@ namespace Lurgle.Dates
                     .Select(t => t.Trim()).ToArray();
                 if (monthArray.Length > 0)
                     foreach (var month in monthArray)
-                        if (Enum.TryParse(month, true, out MonthOfYear monthOfYear))
+                        if (Enum.TryParse(month, true, out MonthOfYear monthOfYear) && !monthResult.Contains(monthOfYear))
                         {
                                 monthResult.Add(monthOfYear);
                         }
-                        else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear))
+                        else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear) && !monthResult.Contains((MonthOfYear)shortMonthOfYear))
                         {
                             monthResult.Add((MonthOfYear)shortMonthOfYear);
                         }
