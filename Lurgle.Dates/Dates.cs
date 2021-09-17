@@ -245,7 +245,7 @@ namespace Lurgle.Dates
         }
 
         /// <summary>
-        ///     Return a list of DayOfWeek, given a comma-delimited string and start time />
+        ///     Return a list of DayOfWeek, given a comma-delimited string and start time for UTC calculation />
         /// </summary>
         /// <param name="daysOfWeek"></param>
         /// <param name="startTime"></param>
@@ -268,7 +268,7 @@ namespace Lurgle.Dates
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
                     foreach (var day in dayArray)
-                        if (Enum.TryParse(day, out DayOfWeek dayOfWeek))
+                        if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek))
                         {
                             if (localStart.ToUniversalTime().DayOfWeek < localStart.DayOfWeek ||
                                 localStart.DayOfWeek == 0 && (int) utcStart.DayOfWeek == 6)
@@ -302,35 +302,20 @@ namespace Lurgle.Dates
         /// <param name="startTime"></param>
         /// <param name="startFormat"></param>
         /// <returns></returns>
-        public static List<DayOfWeek> GetDaysOfWeek(string daysOfWeek, string startTime, string startFormat)
+        public static List<DayOfWeek> GetDaysOfWeek(string daysOfWeek)
         {
             var dayResult = new List<DayOfWeek>();
-            var localStart =
-                DateTime.ParseExact(startTime, startFormat, CultureInfo.InvariantCulture, DateTimeStyles.None);
-
-            //Always calculate based on next start
-            if (localStart < DateTime.Now) localStart = localStart.AddDays(1);
 
             if (!string.IsNullOrEmpty(daysOfWeek))
             {
-                var dayArray = daysOfWeek.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                var dayArray = daysOfWeek.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
                     foreach (var day in dayArray)
-                        if (Enum.TryParse(day, out DayOfWeek dayOfWeek))
+                        if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek))
                         {
-                            if (localStart.ToUniversalTime().DayOfWeek < localStart.DayOfWeek)
-                            {
-                                if (dayOfWeek - 1 >= 0)
-                                    dayResult.Add(dayOfWeek - 1);
-                                else
-                                    dayResult.Add(DayOfWeek.Saturday);
-                            }
-                            else
-                            {
-                                dayResult.Add(dayOfWeek);
-                            }
+                            dayResult.Add(dayOfWeek);
                         }
             }
 
@@ -343,5 +328,39 @@ namespace Lurgle.Dates
 
             return dayResult;
         }
+
+        /// <summary>
+        ///     Return a list of MonthOfYear, given a string array of January,Feb,December />
+        /// </summary>
+        /// <param name="monthsOfYear"></param>
+        /// <returns></returns>
+        public static List<MonthOfYear> GetMonthsOfYear(string monthsOfYear)
+        {
+            var monthResult = new List<MonthOfYear>();
+            if (!string.IsNullOrEmpty(monthsOfYear))
+            {
+                var monthArray = monthsOfYear.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(t => t.Trim()).ToArray();
+                if (monthArray.Length > 0)
+                    foreach (var month in monthArray)
+                        if (Enum.TryParse(month, true, out MonthOfYear monthOfYear))
+                        {
+                                monthResult.Add(monthOfYear);
+                        }
+                        else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear))
+                        {
+                            monthResult.Add((MonthOfYear)shortMonthOfYear);
+                        }
+            }
+
+            if (monthResult.Count == 0)
+                monthResult = new List<MonthOfYear>
+                {
+                    MonthOfYear.January, MonthOfYear.February, MonthOfYear.March, MonthOfYear.April, MonthOfYear.May, MonthOfYear.June, MonthOfYear.July, MonthOfYear.August, MonthOfYear.September, MonthOfYear.October, MonthOfYear.November, MonthOfYear.December
+                };
+
+            return monthResult;
+        }
     }
+
 }

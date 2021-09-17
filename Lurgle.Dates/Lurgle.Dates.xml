@@ -236,6 +236,15 @@
         </member>
         <member name="M:Lurgle.Dates.Dates.GetUtcDaysOfWeek(System.String,System.String,System.String)">
             <summary>
+                Return a list of DayOfWeek, given a comma-delimited string and start time for UTC calculation />
+            </summary>
+            <param name="daysOfWeek"></param>
+            <param name="startTime"></param>
+            <param name="startFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.GetDaysOfWeek(System.String)">
+            <summary>
                 Return a list of DayOfWeek, given a comma-delimited string and start time />
             </summary>
             <param name="daysOfWeek"></param>
@@ -243,13 +252,11 @@
             <param name="startFormat"></param>
             <returns></returns>
         </member>
-        <member name="M:Lurgle.Dates.Dates.GetDaysOfWeek(System.String,System.String,System.String)">
+        <member name="M:Lurgle.Dates.Dates.GetMonthsOfYear(System.String)">
             <summary>
-                Return a list of DayOfWeek, given a comma-delimited string and start time />
+                Return a list of MonthOfYear, given a string array of January,Feb,December />
             </summary>
-            <param name="daysOfWeek"></param>
-            <param name="startTime"></param>
-            <param name="startFormat"></param>
+            <param name="monthsOfYear"></param>
             <returns></returns>
         </member>
         <member name="T:Lurgle.Dates.DateTokens">
@@ -416,6 +423,136 @@
         <member name="F:Lurgle.Dates.Enums.DayType.NoMatch">
             <summary>
                 No match
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Enums.MonthOfYear">
+            <summary>
+            Months of the year expressed as an enum
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.January">
+            <summary>
+            January
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.February">
+            <summary>
+            February
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.March">
+            <summary>
+            March
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.April">
+            <summary>
+            April
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.May">
+            <summary>
+            May
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.June">
+            <summary>
+            June
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.July">
+            <summary>
+            July
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.August">
+            <summary>
+            August
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.September">
+            <summary>
+            September
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.October">
+            <summary>
+            October
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.November">
+            <summary>
+            November
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.MonthOfYear.December">
+            <summary>
+            December
+            </summary>
+        </member>
+        <member name="T:Lurgle.Dates.Enums.ShortMonthOfYear">
+            <summary>
+            Short month name expressed as an enum
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jan">
+            <summary>
+            January
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Feb">
+            <summary>
+            February
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Mar">
+            <summary>
+            March
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Apr">
+            <summary>
+            April
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.May">
+            <summary>
+            May
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jun">
+            <summary>
+            June
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jul">
+            <summary>
+            July
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Aug">
+            <summary>
+            August
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Sep">
+            <summary>
+            September
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Oct">
+            <summary>
+            October
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Nov">
+            <summary>
+            November
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Dec">
+            <summary>
+            December
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Holidays">
