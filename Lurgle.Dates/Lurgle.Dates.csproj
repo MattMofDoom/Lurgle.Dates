@@ -12,11 +12,13 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
     <PackageReleaseNotes>Add DateTokens.CalculateDateExpression to allow parsing a d h m token to a DateTime
 Add w to Jira-type date expressions
 Correct the Dates.ParseDaysOfWeek logic to return local days of week
-Add Dates.ParseMonthsOfYear to return local months</PackageReleaseNotes>
+Add Dates.ParseMonthsOfYear to return local months
+De-duplicate day of week and month of year parsing
+Allow for short day names to be passed to day of week parsing</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

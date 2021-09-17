@@ -555,6 +555,46 @@
             December
             </summary>
         </member>
+        <member name="T:Lurgle.Dates.ShortDayOfWeek">
+            <summary>
+            Alternative DayOfWeek enum for short day names
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Sun">
+            <summary>
+            Sunday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Mon">
+            <summary>
+            Monday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Tue">
+            <summary>
+            Tuesday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Wed">
+            <summary>
+            Wednesday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Thu">
+            <summary>
+            Thursday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Fri">
+            <summary>
+            Friday
+            </summary>
+        </member>
+        <member name="F:Lurgle.Dates.ShortDayOfWeek.Sat">
+            <summary>
+            Saturday
+            </summary>
+        </member>
         <member name="T:Lurgle.Dates.Holidays">
             <summary>
                 Holidays methods
