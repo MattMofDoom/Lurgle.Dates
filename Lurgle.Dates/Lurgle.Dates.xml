@@ -245,11 +245,9 @@
         </member>
         <member name="M:Lurgle.Dates.Dates.GetDaysOfWeek(System.String)">
             <summary>
-                Return a list of DayOfWeek, given a comma-delimited string and start time />
+                Return a list of DayOfWeek, given a comma-delimited string />
             </summary>
             <param name="daysOfWeek"></param>
-            <param name="startTime"></param>
-            <param name="startFormat"></param>
             <returns></returns>
         </member>
         <member name="M:Lurgle.Dates.Dates.GetMonthsOfYear(System.String)">
@@ -257,6 +255,44 @@
                 Return a list of MonthOfYear, given a string array of January,Feb,December />
             </summary>
             <param name="monthsOfYear"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.ParseIntervalDate(System.String,System.String,System.String,System.String)">
+            <summary>
+                Parse a given date and time to a local date/time
+            </summary>
+            <param name="sourceDate">Date in dateFormat format</param>
+            <param name="scheduleTime">Time in timeFormat format</param>
+            <param name="dateFormat">Date format - default yyyy-MMM-dd</param>
+            <param name="timeFormat">Time format - default H:mm:ss</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.ParseIntervalDate(System.DateTime,System.String,System.String)">
+            <summary>
+                Parse a given date and time to a local date/time
+            </summary>
+            <param name="sourceDate"></param>
+            <param name="scheduleTime">Time in timeFormat format</param>
+            <param name="timeFormat">Time format - default H:mm:ss</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.ParseUtcIntervalDate(System.String,System.String,System.String,System.String)">
+            <summary>
+                Parse a given date and time to a UTC date/time
+            </summary>
+            <param name="sourceDate">Date in dateFormat format</param>
+            <param name="scheduleTime">Time in timeFormat format</param>
+            <param name="dateFormat">Date format - default yyyy-MMM-dd</param>
+            <param name="timeFormat">Time format - default H:mm:ss</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lurgle.Dates.Dates.ParseUtcIntervalDate(System.DateTime,System.String,System.String)">
+            <summary>
+                Parse a given date and time to a UTC date/time
+            </summary>
+            <param name="sourceDate"></param>
+            <param name="scheduleTime">Time in timeFormat format</param>
+            <param name="timeFormat">Time format - default H:mm:ss</param>
             <returns></returns>
         </member>
         <member name="T:Lurgle.Dates.DateTokens">
@@ -427,172 +463,172 @@
         </member>
         <member name="T:Lurgle.Dates.Enums.MonthOfYear">
             <summary>
-            Months of the year expressed as an enum
+                Months of the year expressed as an enum
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.January">
             <summary>
-            January
+                January
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.February">
             <summary>
-            February
+                February
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.March">
             <summary>
-            March
+                March
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.April">
             <summary>
-            April
+                April
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.May">
             <summary>
-            May
+                May
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.June">
             <summary>
-            June
+                June
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.July">
             <summary>
-            July
+                July
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.August">
             <summary>
-            August
+                August
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.September">
             <summary>
-            September
+                September
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.October">
             <summary>
-            October
+                October
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.November">
             <summary>
-            November
+                November
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.MonthOfYear.December">
             <summary>
-            December
+                December
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Enums.ShortMonthOfYear">
             <summary>
-            Short month name expressed as an enum
+                Short month name expressed as an enum
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jan">
             <summary>
-            January
+                January
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Feb">
             <summary>
-            February
+                February
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Mar">
             <summary>
-            March
+                March
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Apr">
             <summary>
-            April
+                April
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.May">
             <summary>
-            May
+                May
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jun">
             <summary>
-            June
+                June
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Jul">
             <summary>
-            July
+                July
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Aug">
             <summary>
-            August
+                August
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Sep">
             <summary>
-            September
+                September
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Oct">
             <summary>
-            October
+                October
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Nov">
             <summary>
-            November
+                November
             </summary>
         </member>
         <member name="F:Lurgle.Dates.Enums.ShortMonthOfYear.Dec">
             <summary>
-            December
+                December
             </summary>
         </member>
-        <member name="T:Lurgle.Dates.ShortDayOfWeek">
+        <member name="T:Lurgle.Dates.Enums.ShortDayOfWeek">
             <summary>
-            Alternative DayOfWeek enum for short day names
+                Alternative DayOfWeek enum for short day names
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Sun">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Sun">
             <summary>
-            Sunday
+                Sunday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Mon">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Mon">
             <summary>
-            Monday
+                Monday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Tue">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Tue">
             <summary>
-            Tuesday
+                Tuesday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Wed">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Wed">
             <summary>
-            Wednesday
+                Wednesday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Thu">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Thu">
             <summary>
-            Thursday
+                Thursday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Fri">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Fri">
             <summary>
-            Friday
+                Friday
             </summary>
         </member>
-        <member name="F:Lurgle.Dates.ShortDayOfWeek.Sat">
+        <member name="F:Lurgle.Dates.Enums.ShortDayOfWeek.Sat">
             <summary>
-            Saturday
+                Saturday
             </summary>
         </member>
         <member name="T:Lurgle.Dates.Holidays">

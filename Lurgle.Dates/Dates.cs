@@ -82,17 +82,17 @@ namespace Lurgle.Dates
                     //Calculate the day of week in the month, according to the DayExpression (First, Second, Third, Fourth, Fifth, Last)
                     if (dayOrder == DayOrder.Last)
                     {
-                        while ((int) lastDay.DayOfWeek != (int) matchDay) lastDay = lastDay.AddDays(-1);
+                        while ((int)lastDay.DayOfWeek != (int)matchDay) lastDay = lastDay.AddDays(-1);
 
                         return new DateExpression(dayOrder, dayType, lastDay.DayOfWeek, lastDay);
                     }
                     else if (dayOrder != DayOrder.None)
                     {
                         //Match the first day of month for this DayOfWeek
-                        while ((int) firstDay.DayOfWeek != (int) matchDay) firstDay = firstDay.AddDays(1);
+                        while ((int)firstDay.DayOfWeek != (int)matchDay) firstDay = firstDay.AddDays(1);
 
                         //Calculate the nth DayOfWeek
-                        firstDay = firstDay.AddDays((int) dayOrder * 7);
+                        firstDay = firstDay.AddDays((int)dayOrder * 7);
 
                         //Make sure the nth DayOfWeek is still in the same month
                         return dateRef.Month == firstDay.Month
@@ -196,7 +196,7 @@ namespace Lurgle.Dates
             var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
-                var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                var dayList = dateExpression.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToList();
 
                 var localStart = DateTime.ParseExact(startTime, startFormat, CultureInfo.InvariantCulture,
@@ -229,7 +229,7 @@ namespace Lurgle.Dates
             var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
-                var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                var dayList = dateExpression.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToList();
 
                 var localStart = DateTime.ParseExact(startTime, startFormat, CultureInfo.InvariantCulture,
@@ -263,7 +263,7 @@ namespace Lurgle.Dates
 
             if (!string.IsNullOrEmpty(daysOfWeek))
             {
-                var dayArray = daysOfWeek.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                var dayArray = daysOfWeek.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
@@ -274,12 +274,11 @@ namespace Lurgle.Dates
                             if (!dayResult.Contains(dow))
                                 dayResult.Add(dow);
                         }
-                        else if  (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek))
+                        else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek))
                         {
                             var dow = GetUtcDayOfWeek(localStart, utcStart, (DayOfWeek)shortDayOfWeek);
                             if (!dayResult.Contains(dow))
                                 dayResult.Add(dow);
-                            
                         }
             }
 
@@ -301,15 +300,12 @@ namespace Lurgle.Dates
                 return dayOfWeek - 1;
 
             return DayOfWeek.Saturday;
-
         }
 
         /// <summary>
-        ///     Return a list of DayOfWeek, given a comma-delimited string and start time />
+        ///     Return a list of DayOfWeek, given a comma-delimited string />
         /// </summary>
         /// <param name="daysOfWeek"></param>
-        /// <param name="startTime"></param>
-        /// <param name="startFormat"></param>
         /// <returns></returns>
         public static List<DayOfWeek> GetDaysOfWeek(string daysOfWeek)
         {
@@ -323,12 +319,10 @@ namespace Lurgle.Dates
                     //Calculate days of week based on UTC start times
                     foreach (var day in dayArray)
                         if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek) && !dayResult.Contains(dayOfWeek))
-                        {
                             dayResult.Add(dayOfWeek);
-                        } else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek) && !dayResult.Contains((DayOfWeek)shortDayOfWeek))
-                        {
+                        else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek) &&
+                                 !dayResult.Contains((DayOfWeek)shortDayOfWeek))
                             dayResult.Add((DayOfWeek)shortDayOfWeek);
-                        }
             }
 
             if (dayResult.Count == 0)
@@ -351,28 +345,87 @@ namespace Lurgle.Dates
             var monthResult = new List<MonthOfYear>();
             if (!string.IsNullOrEmpty(monthsOfYear))
             {
-                var monthArray = monthsOfYear.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                var monthArray = monthsOfYear.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (monthArray.Length > 0)
                     foreach (var month in monthArray)
-                        if (Enum.TryParse(month, true, out MonthOfYear monthOfYear) && !monthResult.Contains(monthOfYear))
-                        {
-                                monthResult.Add(monthOfYear);
-                        }
-                        else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear) && !monthResult.Contains((MonthOfYear)shortMonthOfYear))
-                        {
+                        if (Enum.TryParse(month, true, out MonthOfYear monthOfYear) &&
+                            !monthResult.Contains(monthOfYear))
+                            monthResult.Add(monthOfYear);
+                        else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear) &&
+                                 !monthResult.Contains((MonthOfYear)shortMonthOfYear))
                             monthResult.Add((MonthOfYear)shortMonthOfYear);
-                        }
             }
 
             if (monthResult.Count == 0)
                 monthResult = new List<MonthOfYear>
                 {
-                    MonthOfYear.January, MonthOfYear.February, MonthOfYear.March, MonthOfYear.April, MonthOfYear.May, MonthOfYear.June, MonthOfYear.July, MonthOfYear.August, MonthOfYear.September, MonthOfYear.October, MonthOfYear.November, MonthOfYear.December
+                    MonthOfYear.January, MonthOfYear.February, MonthOfYear.March, MonthOfYear.April, MonthOfYear.May,
+                    MonthOfYear.June, MonthOfYear.July, MonthOfYear.August, MonthOfYear.September, MonthOfYear.October,
+                    MonthOfYear.November, MonthOfYear.December
                 };
 
             return monthResult;
         }
-    }
 
+        /// <summary>
+        ///     Parse a given date and time to a local date/time
+        /// </summary>
+        /// <param name="sourceDate">Date in dateFormat format</param>
+        /// <param name="scheduleTime">Time in timeFormat format</param>
+        /// <param name="dateFormat">Date format - default yyyy-MMM-dd</param>
+        /// <param name="timeFormat">Time format - default H:mm:ss</param>
+        /// <returns></returns>
+        public static DateTime ParseIntervalDate(string sourceDate, string scheduleTime,
+            string dateFormat = "yyyy-MMM-dd", string timeFormat = "H:mm:ss")
+        {
+            return DateTime.ParseExact(sourceDate + " " + scheduleTime,
+                dateFormat + " " + timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None);
+        }
+
+        /// <summary>
+        ///     Parse a given date and time to a local date/time
+        /// </summary>
+        /// <param name="sourceDate"></param>
+        /// <param name="scheduleTime">Time in timeFormat format</param>
+        /// <param name="timeFormat">Time format - default H:mm:ss</param>
+        /// <returns></returns>
+        public static DateTime ParseIntervalDate(DateTime sourceDate, string scheduleTime,
+            string timeFormat = "H:mm:ss")
+        {
+            return DateTime.ParseExact(sourceDate.ToString("yyyy-MMM-dd") + " " + scheduleTime,
+                "yyyy-MMM-dd " + timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None);
+        }
+
+        /// <summary>
+        ///     Parse a given date and time to a UTC date/time
+        /// </summary>
+        /// <param name="sourceDate">Date in dateFormat format</param>
+        /// <param name="scheduleTime">Time in timeFormat format</param>
+        /// <param name="dateFormat">Date format - default yyyy-MMM-dd</param>
+        /// <param name="timeFormat">Time format - default H:mm:ss</param>
+        /// <returns></returns>
+        public static DateTime ParseUtcIntervalDate(string sourceDate, string scheduleTime,
+            string dateFormat = "yyyy-MMM-dd", string timeFormat = "H:mm:ss")
+        {
+            return DateTime.ParseExact(sourceDate + " " + scheduleTime,
+                    dateFormat + " " + timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None)
+                .ToUniversalTime();
+        }
+
+        /// <summary>
+        ///     Parse a given date and time to a UTC date/time
+        /// </summary>
+        /// <param name="sourceDate"></param>
+        /// <param name="scheduleTime">Time in timeFormat format</param>
+        /// <param name="timeFormat">Time format - default H:mm:ss</param>
+        /// <returns></returns>
+        public static DateTime ParseUtcIntervalDate(DateTime sourceDate, string scheduleTime,
+            string timeFormat = "H:mm:ss")
+        {
+            return DateTime.ParseExact(sourceDate.ToString("yyyy-MMM-dd") + " " + scheduleTime,
+                    "yyyy-MMM-dd " + timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None)
+                .ToUniversalTime();
+        }
+    }
 }

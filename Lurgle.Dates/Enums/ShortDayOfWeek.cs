@@ -1,40 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ReSharper disable UnusedMember.Global
 
-namespace Lurgle.Dates
+namespace Lurgle.Dates.Enums
 {
     /// <summary>
-    /// Alternative DayOfWeek enum for short day names
+    ///     Alternative DayOfWeek enum for short day names
     /// </summary>
     public enum ShortDayOfWeek
     {
         /// <summary>
-        /// Sunday
+        ///     Sunday
         /// </summary>
         Sun = 0,
+
         /// <summary>
-        /// Monday
+        ///     Monday
         /// </summary>
         Mon = 1,
+
         /// <summary>
-        /// Tuesday
+        ///     Tuesday
         /// </summary>
         Tue = 2,
+
         /// <summary>
-        /// Wednesday
+        ///     Wednesday
         /// </summary>
         Wed = 3,
+
         /// <summary>
-        /// Thursday
+        ///     Thursday
         /// </summary>
         Thu = 4,
+
         /// <summary>
-        /// Friday
+        ///     Friday
         /// </summary>
         Fri = 5,
+
         /// <summary>
-        /// Saturday
+        ///     Saturday
         /// </summary>
         Sat = 6
     }
