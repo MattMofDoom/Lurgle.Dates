@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+// ReSharper disable ClassNeverInstantiated.Global
 
 namespace Lurgle.Dates.Classes
 {
     /// <summary>
     ///     AbstractAPI Holidays API format
     /// </summary>
-    // ReSharper disable once ClassNeverInstantiated.Global
     public class AbstractApiHolidays
     {
         /// <summary>
@@ -27,7 +27,6 @@ namespace Lurgle.Dates.Classes
         /// <param name="date_day"></param>
         /// <param name="week_day"></param>
         // ReSharper disable InconsistentNaming
-        // ReSharper disable once ArrangeTypeMemberModifiers
         public AbstractApiHolidays(string name, string name_local, string language, string description,
             string country,
             string location, string type, string date, string date_year, string date_month, string date_day,

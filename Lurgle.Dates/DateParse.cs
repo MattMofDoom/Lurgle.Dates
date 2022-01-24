@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Global
 
 namespace Lurgle.Dates
 {
