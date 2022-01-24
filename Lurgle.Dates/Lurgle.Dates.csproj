@@ -20,12 +20,12 @@
 - Code cleanup</PackageReleaseNotes>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\mattm\source\repos\Lurgle.Dates\Lurgle.Dates\Lurgle.Dates.xml</DocumentationFile>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Users\mattm\Source\repos\Lurgle.Dates\Lurgle.Dates\Lurgle.Dates.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\mattm\source\repos\Lurgle.Dates\Lurgle.Dates\Lurgle.Dates.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,7 +42,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="$(OutDir)/**/*" Exclude="$(OutDir)/$(MSBuildProjectName).dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
   </ItemGroup>
 
 </Project>
