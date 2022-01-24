@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Lurgle.Dates.Classes;
+// ReSharper disable UnusedType.Global
 
 // ReSharper disable UnusedMember.Global
 
@@ -49,14 +50,12 @@ namespace Lurgle.Dates
                 var isWeekend = false;
 
                 if (holidayMatch.Count > 0)
-                    // ReSharper disable once UnusedVariable
-                    foreach (var match in holidayMatch.Where(match =>
+                    foreach (var unused in holidayMatch.Where(match =>
                         holiday.Type.IndexOf(match, StringComparison.OrdinalIgnoreCase) >= 0))
                         hasType = true;
 
                 if (localeMatch.Count > 0)
-                    // ReSharper disable once UnusedVariable
-                    foreach (var match in localeMatch.Where(match =>
+                    foreach (var unused in localeMatch.Where(match =>
                         holiday.Locations.FindIndex(loc => loc.Equals(match, StringComparison.OrdinalIgnoreCase)) >=
                         0))
                         hasRegion = true;

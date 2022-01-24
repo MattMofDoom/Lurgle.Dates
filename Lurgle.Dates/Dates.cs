@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Lurgle.Dates.Classes;
 using Lurgle.Dates.Enums;
+// ReSharper disable UnusedType.Global
 
 // ReSharper disable UnusedMember.Global
 

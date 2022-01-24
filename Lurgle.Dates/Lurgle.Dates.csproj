@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461;net47;net48;net5.0;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <ApplicationIcon>Dates.ico</ApplicationIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>dates.png</PackageIcon>
@@ -12,23 +12,25 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
-    <Version>1.0.11</Version>
-    <PackageReleaseNotes>Add DateTokens.CalculateDateExpression to allow parsing a d h m token to a DateTime
-Add w to Jira-type date expressions
-Correct the Dates.ParseDaysOfWeek logic to return local days of week
-Add Dates.ParseMonthsOfYear to return local months
-De-duplicate day of week and month of year parsing
-Allow for short day names to be passed to day of week parsing
-Add Dates.ParseIntervalDate and Dates.ParseUtcIntervalDate</PackageReleaseNotes>
+    <Version>1.0.12</Version>
+    <PackageReleaseNotes>- Update Flurl
+ and Flurl.Http
+- Add multiple target frameworks
+- Add XML documentation file
+- Code cleanup</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\mattm\source\repos\Lurgle.Dates\Lurgle.Dates\Lurgle.Dates.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DocumentationFile>C:\Users\mattm\Source\repos\Lurgle.Dates\Lurgle.Dates\Lurgle.Dates.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Flurl" Version="3.0.2" />
-    <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="Flurl" Version="3.0.3" />
+    <PackageReference Include="Flurl.Http" Version="3.2.1" />
   </ItemGroup>
 
   <ItemGroup>

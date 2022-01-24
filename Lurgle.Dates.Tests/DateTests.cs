@@ -799,13 +799,13 @@ namespace Lurgle.Dates.Tests
             _testOutputHelper.WriteLine(string.Join(",", Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm").Select(d => d.ToString()).ToList()));
             if (timeNow.ToUniversalTime() == timeNow)
                 Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm"),
-                    new List<DayOfWeek>()
+                    new List<DayOfWeek>
                     {
                         DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday
                     });
             else
                 Assert.Equal(Dates.GetUtcDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday", "9:00", "H:mm"),
-                    new List<DayOfWeek>()
+                    new List<DayOfWeek>
                     {
                         DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday
                     });
@@ -816,7 +816,7 @@ namespace Lurgle.Dates.Tests
         {
             _testOutputHelper.WriteLine(string.Join(",", Dates.GetDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday").Select(d => d.ToString()).ToList()));
             Assert.Equal(Dates.GetDaysOfWeek("Monday,Tuesday,Wed,Wednesday,Thursday,Friday"),
-                new List<DayOfWeek>()
+                new List<DayOfWeek>
                 {
                     DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday
                 });
@@ -826,7 +826,7 @@ namespace Lurgle.Dates.Tests
         public void ParseMonthsOfYear()
         {
             Assert.Equal(Dates.GetMonthsOfYear("January,February,April,June,December"),
-                new List<MonthOfYear>()
+                new List<MonthOfYear>
                 {
                     MonthOfYear.January, MonthOfYear.February, MonthOfYear.April, MonthOfYear.June, MonthOfYear.December
                 });
