@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedType.Global
 
@@ -70,7 +71,7 @@ namespace Lurgle.Dates
         {
             var date = DateTime.Now;
             if (startDate != null)
-                date = (DateTime)startDate;
+                date = (DateTime) startDate;
 
             var match = Regex.Match(value, "^((?:(\\d+)w\\s?)?(?:(\\d+)d\\s?)?(?:(\\d+)h\\s?)?(?:(\\d+)m)?)$",
                 RegexOptions.IgnoreCase);
@@ -127,7 +128,7 @@ namespace Lurgle.Dates
             }
 
             if (token == null) return replaceValue;
-            var tokenPair = (KeyValuePair<string, string>)token;
+            var tokenPair = (KeyValuePair<string, string>) token;
             replaceValue = Regex.Replace(replaceValue, "{LogToken}", tokenPair.Key);
             replaceValue = Regex.Replace(replaceValue, "{LogTokenLong}", tokenPair.Value);
 

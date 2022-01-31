@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+
 // ReSharper disable ClassNeverInstantiated.Global
 
 namespace Lurgle.Dates.Classes
@@ -41,9 +42,9 @@ namespace Lurgle.Dates.Classes
                 Locations = Location
                     .Substring(Location.IndexOf(" - ", StringComparison.Ordinal) + 3,
                         Location.Length - Location.IndexOf(" - ", StringComparison.Ordinal) - 3)
-                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim()).ToList();
+                    .Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim()).ToList();
             else
-                Locations = Location.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                Locations = Location.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim())
                     .ToList();
 
