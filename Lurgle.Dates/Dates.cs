@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Lurgle.Dates.Classes;
 using Lurgle.Dates.Enums;
+
 // ReSharper disable UnusedType.Global
 
 // ReSharper disable UnusedMember.Global
@@ -83,17 +84,17 @@ namespace Lurgle.Dates
                     //Calculate the day of week in the month, according to the DayExpression (First, Second, Third, Fourth, Fifth, Last)
                     if (dayOrder == DayOrder.Last)
                     {
-                        while ((int)lastDay.DayOfWeek != (int)matchDay) lastDay = lastDay.AddDays(-1);
+                        while ((int) lastDay.DayOfWeek != (int) matchDay) lastDay = lastDay.AddDays(-1);
 
                         return new DateExpression(dayOrder, dayType, lastDay.DayOfWeek, lastDay);
                     }
                     else if (dayOrder != DayOrder.None)
                     {
                         //Match the first day of month for this DayOfWeek
-                        while ((int)firstDay.DayOfWeek != (int)matchDay) firstDay = firstDay.AddDays(1);
+                        while ((int) firstDay.DayOfWeek != (int) matchDay) firstDay = firstDay.AddDays(1);
 
                         //Calculate the nth DayOfWeek
-                        firstDay = firstDay.AddDays((int)dayOrder * 7);
+                        firstDay = firstDay.AddDays((int) dayOrder * 7);
 
                         //Make sure the nth DayOfWeek is still in the same month
                         return dateRef.Month == firstDay.Month
@@ -197,7 +198,7 @@ namespace Lurgle.Dates
             var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
-                var dayList = dateExpression.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToList();
 
                 var localStart = DateTime.ParseExact(startTime, startFormat, CultureInfo.InvariantCulture,
@@ -206,8 +207,8 @@ namespace Lurgle.Dates
                 if (localStart < timeNow) localStart = localStart.AddDays(1);
 
                 foreach (var dateResult in dayList.Select(resultDay => GetDayType(resultDay, localStart, timeNow))
-                    .Where(dateResult => dateResult.DayType != DayType.NoMatch &&
-                                         !dayResult.Contains(dateResult.Date.ToUniversalTime())))
+                             .Where(dateResult => dateResult.DayType != DayType.NoMatch &&
+                                                  !dayResult.Contains(dateResult.Date.ToUniversalTime())))
                     dayResult.Add(dateResult.Date.ToUniversalTime());
             }
 
@@ -230,14 +231,15 @@ namespace Lurgle.Dates
             var dayResult = new List<DateTime>();
             if (!string.IsNullOrEmpty(dateExpression))
             {
-                var dayList = dateExpression.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var dayList = dateExpression.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToList();
 
                 var localStart = DateTime.ParseExact(startTime, startFormat, CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
 
                 foreach (var dateResult in dayList.Select(resultDay => GetDayType(resultDay, localStart, timeNow))
-                    .Where(dateResult => dateResult.DayType != DayType.NoMatch && !dayResult.Contains(dateResult.Date)))
+                             .Where(dateResult =>
+                                 dateResult.DayType != DayType.NoMatch && !dayResult.Contains(dateResult.Date)))
                     dayResult.Add(dateResult.Date);
             }
 
@@ -264,7 +266,7 @@ namespace Lurgle.Dates
 
             if (!string.IsNullOrEmpty(daysOfWeek))
             {
-                var dayArray = daysOfWeek.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var dayArray = daysOfWeek.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
@@ -277,7 +279,7 @@ namespace Lurgle.Dates
                         }
                         else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek))
                         {
-                            var dow = GetUtcDayOfWeek(localStart, utcStart, (DayOfWeek)shortDayOfWeek);
+                            var dow = GetUtcDayOfWeek(localStart, utcStart, (DayOfWeek) shortDayOfWeek);
                             if (!dayResult.Contains(dow))
                                 dayResult.Add(dow);
                         }
@@ -296,7 +298,7 @@ namespace Lurgle.Dates
         private static DayOfWeek GetUtcDayOfWeek(DateTime localStart, DateTime utcStart, DayOfWeek dayOfWeek)
         {
             if (localStart.ToUniversalTime().DayOfWeek >= localStart.DayOfWeek &&
-                (localStart.DayOfWeek != 0 || (int)utcStart.DayOfWeek != 6)) return dayOfWeek;
+                (localStart.DayOfWeek != 0 || (int) utcStart.DayOfWeek != 6)) return dayOfWeek;
             if (dayOfWeek - 1 >= 0)
                 return dayOfWeek - 1;
 
@@ -314,7 +316,7 @@ namespace Lurgle.Dates
 
             if (!string.IsNullOrEmpty(daysOfWeek))
             {
-                var dayArray = daysOfWeek.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var dayArray = daysOfWeek.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (dayArray.Length > 0)
                     //Calculate days of week based on UTC start times
@@ -322,8 +324,8 @@ namespace Lurgle.Dates
                         if (Enum.TryParse(day, true, out DayOfWeek dayOfWeek) && !dayResult.Contains(dayOfWeek))
                             dayResult.Add(dayOfWeek);
                         else if (Enum.TryParse(day, true, out ShortDayOfWeek shortDayOfWeek) &&
-                                 !dayResult.Contains((DayOfWeek)shortDayOfWeek))
-                            dayResult.Add((DayOfWeek)shortDayOfWeek);
+                                 !dayResult.Contains((DayOfWeek) shortDayOfWeek))
+                            dayResult.Add((DayOfWeek) shortDayOfWeek);
             }
 
             if (dayResult.Count == 0)
@@ -346,7 +348,7 @@ namespace Lurgle.Dates
             var monthResult = new List<MonthOfYear>();
             if (!string.IsNullOrEmpty(monthsOfYear))
             {
-                var monthArray = monthsOfYear.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var monthArray = monthsOfYear.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(t => t.Trim()).ToArray();
                 if (monthArray.Length > 0)
                     foreach (var month in monthArray)
@@ -354,8 +356,8 @@ namespace Lurgle.Dates
                             !monthResult.Contains(monthOfYear))
                             monthResult.Add(monthOfYear);
                         else if (Enum.TryParse(month, true, out ShortMonthOfYear shortMonthOfYear) &&
-                                 !monthResult.Contains((MonthOfYear)shortMonthOfYear))
-                            monthResult.Add((MonthOfYear)shortMonthOfYear);
+                                 !monthResult.Contains((MonthOfYear) shortMonthOfYear))
+                            monthResult.Add((MonthOfYear) shortMonthOfYear);
             }
 
             if (monthResult.Count == 0)

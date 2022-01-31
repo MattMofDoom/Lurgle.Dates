@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+
 // ReSharper disable UnusedType.Global
 // ReSharper disable UnusedMember.Global
 
@@ -67,7 +68,7 @@ namespace Lurgle.Dates
                     var match = Regex.Match(value, hybridExpression);
                     var relativeTime = ParseTimeStringUtc(match.Groups[4].Value);
                     return relativeTime != null
-                        ? ParseDateExpressionUtc(((DateTime)relativeTime).ToLocalTime(), match.Groups[1].Value,
+                        ? ParseDateExpressionUtc(((DateTime) relativeTime).ToLocalTime(), match.Groups[1].Value,
                             int.Parse(match.Groups[2].Value),
                             match.Groups[3].Value)
                         : null;
@@ -121,7 +122,7 @@ namespace Lurgle.Dates
                     var match = Regex.Match(value, hybridExpression);
                     var relativeTime = ParseTimeString(match.Groups[4].Value);
                     return relativeTime != null
-                        ? ParseDateExpression((DateTime)relativeTime, match.Groups[1].Value,
+                        ? ParseDateExpression((DateTime) relativeTime, match.Groups[1].Value,
                             int.Parse(match.Groups[2].Value),
                             match.Groups[3].Value)
                         : null;
@@ -208,13 +209,13 @@ namespace Lurgle.Dates
         {
             var timeFormat = "H:mm:ss";
             if (DateTime.TryParseExact(time, timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
-                out _))
+                    out _))
                 return DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture,
                     DateTimeStyles.None).ToUniversalTime();
             timeFormat = "H:mm";
             if (!DateTime.TryParseExact(time, timeFormat, CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out _))
+                    DateTimeStyles.None,
+                    out _))
                 return null;
 
             return DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture,
@@ -225,13 +226,13 @@ namespace Lurgle.Dates
         {
             var timeFormat = "H:mm:ss";
             if (DateTime.TryParseExact(time, timeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
-                out _))
+                    out _))
                 return DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture,
                     DateTimeStyles.None);
             timeFormat = "H:mm";
             if (!DateTime.TryParseExact(time, timeFormat, CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out _))
+                    DateTimeStyles.None,
+                    out _))
                 return null;
 
             return DateTime.ParseExact(time, timeFormat, CultureInfo.InvariantCulture,
