@@ -12,13 +12,13 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
-    <Version>1.0.13</Version>
+    <Version>1.0.14</Version>
     <PackageReleaseNotes>
       - Update Flurl and Flurl.Http
       - Add multiple target frameworks
       - Add XML documentation file
       - Code cleanup
-    </PackageReleaseNotes>
+      - Fix GetDayType bug validating invalid day of month</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup>
