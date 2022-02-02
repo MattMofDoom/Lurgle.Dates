@@ -221,7 +221,7 @@ namespace Lurgle.Dates
 
 
         /// <summary>
-        ///     Return the UTC days of month that are included/excluded, given a date expression and start time
+        ///     Return the days of month that are included/excluded, given a date expression and start time
         /// </summary>
         /// <param name="dateExpression"></param>
         /// <param name="startTime"></param>
