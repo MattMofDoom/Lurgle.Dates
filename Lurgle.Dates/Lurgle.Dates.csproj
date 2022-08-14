@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;net47;net48;net5.0;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;net47;net48;net5.0;netcoreapp3.1</TargetFrameworks>
     <ApplicationIcon>Dates.ico</ApplicationIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>dates.png</PackageIcon>
@@ -12,13 +12,14 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Lurgle date expression token calculation</PackageTags>
     <Description>A common library for calculating date expressions and formatting date tokens</Description>
-    <Version>1.0.14</Version>
-    <PackageReleaseNotes>
-      - Update Flurl and Flurl.Http
+    <Version>1.0.15</Version>
+    <PackageReleaseNotes>- Update Flurl and Flurl.Http
       - Add multiple target frameworks
       - Add XML documentation file
       - Code cleanup
-      - Fix GetDayType bug validating invalid day of month</PackageReleaseNotes>
+      - Fix GetDayType bug validating invalid day of month
+      - Remove .NET Core 2.1 support due to deprecation
+      - Update dependencies</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -30,8 +31,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl" Version="3.0.4" />
-    <PackageReference Include="Flurl.Http" Version="3.2.2" />
+    <PackageReference Include="Flurl" Version="3.0.6" />
+    <PackageReference Include="Flurl.Http" Version="3.2.4" />
   </ItemGroup>
 
   <ItemGroup>
